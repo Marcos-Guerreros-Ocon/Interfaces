@@ -1,0 +1,163 @@
+body {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    background-color: #FFF;
+    color: #555;
+    margin: 0;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #362c20;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Century Gothic', Arial;
+    color: #000;
+}
+
+#header {
+    background-color: #000;
+    padding: 0 20px;
+}
+
+#header a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#logo {
+    background: #1d1d1d;
+    position: relative;
+    padding: 10px;
+}
+
+#logo_text h2 {
+    font-weight: normal;
+    font-size: 15px;
+    color: #aa8b88;
+}
+
+#menubar {
+    padding-right: 8px;
+    background: #2D2D2D;
+    border-top: 1px solid #3D3D3D;
+
+}
+
+#menu {
+    float: left;
+}
+
+#menu li {
+    float: none;
+    list-style: none;
+    margin: 30px;
+
+}
+
+#menu li a {
+    background-color: #5b4239;
+    padding: 10px 20px;
+}
+
+#banner {
+    background: transparent url(../img/banner.jpg) no-repeat;
+    background-size: cover;
+    margin: 10px 20px;
+    height: 150px;
+    border: 10px solid #DDD;
+}
+
+#sidebar_container {
+    display: block;
+    width: auto;
+    margin: 20px
+}
+
+.sidebar_item {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.sidebar_item h4 {
+    color: #a19089;
+}
+
+#content {
+    width: 75%;
+    margin: 20px;
+}
+
+
+ul li {
+    list-style-image: url(../img/bullet.png);
+}
+
+
+a {
+    color: #a19089;
+
+}
+
+#footer {
+
+    background-color: #000;
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+    height: 50px;
+
+}
+
+#footer p {
+    padding-top: 15px;
+}
+
+.selected a {
+    background-color: #b78880 !important;
+}
+
+@media screen and (min-width: 1000px) {
+
+    #menu {
+        float: right;
+    }
+
+    #menu li {
+        float: left;
+        margin: 5px;
+
+    }
+
+
+
+    #sidebar_container {
+        display: inline-block;
+        width: 15%;
+    }
+
+    #content {
+        float: right;
+        margin: 20px;
+    }
+
+    .clear-both {
+        clear: both;
+        margin: 0px;
+        padding: 0px;
+        height: 1px;
+        width: 100%;
+        background-color: transparent;
+    }
+
+
+
+}
