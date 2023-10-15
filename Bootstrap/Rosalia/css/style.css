@@ -34,3 +34,10 @@ body {
 .tiempoPublicacion {
     color: #999999;
 }
+
+@media screen and (min-width: 1200px) {
+    #extra {
+        position: absolute;
+        bottom: 0;
+    }
+}
