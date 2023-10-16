@@ -19,12 +19,15 @@ nav {
 }
 
 button {
-
     background: transparent;
-    border: 0.1rem solid rgb(33, 37, 41);
+    border: 0.1rem solid white;
     height: 3rem;
     width: 210px;
     max-width: 100%;
+}
+
+button span {
+    color: white;
 }
 
 .hero {
@@ -52,6 +55,55 @@ p {
 
 .hero .row {
     --bs-gutter-x: 0;
+}
+
+
+.bordes {
+    border-bottom: 1px solid rgb(239, 65, 45);
+    ;
+}
+
+.card-body ::marker,
+.proyecto ::marker {
+    content: "+";
+    color: rgb(239, 65, 45);
+}
+
+.tiempo {
+    margin: 0;
+    color: gray;
+    font-style: italic;
+}
+
+footer {
+    background-color: #373737;
+    padding: 1em 0em;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bi::before {
+    font-size: 30px
+}
+
+.proyecto {
+    padding: 5em;
+    color: white;
+}
+
+.proyecto h3 {
+    font-family: "Exo 2", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    font-size: 3rem;
+}
+
+.content {
+    color: white;
 }
 
 @media screen and (min-width: 991px) {
@@ -108,48 +160,4 @@ p {
     h3 {
         font-size: 1rem !important;
     }
-}
-
-.bordes {
-    border-bottom: 1px solid rgb(239, 65, 45);
-    ;
-}
-
-.card-body ::marker,
-.proyecto ::marker {
-    content: "+";
-    color: rgb(239, 65, 45);
-}
-
-.tiempo {
-    margin: 0;
-    color: gray;
-    font-style: italic;
-}
-
-footer {
-    background-color: #373737;
-    padding: 1em 0em;
-}
-
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-.bi::before {
-    font-size: 30px
-}
-
-.proyecto {
-    padding: 5em;
-    color: white;
-}
-
-.proyecto h3 {
-    font-family: "Exo 2", sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: white;
-    font-size: 3rem;
 }

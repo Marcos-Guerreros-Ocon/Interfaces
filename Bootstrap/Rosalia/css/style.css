@@ -35,9 +35,24 @@ body {
     color: #999999;
 }
 
+#nav {
+    height: 7em;
+    border-bottom: 1px #dddddd solid;
+}
+
 @media screen and (min-width: 1200px) {
     #extra {
         position: absolute;
         bottom: 0;
     }
+
+    #publicacion {
+        margin: 0% 13em
+    }
+
+    #nav {
+        height: 4em;
+
+    }
+
 }
