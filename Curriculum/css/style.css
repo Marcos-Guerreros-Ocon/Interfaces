@@ -25,8 +25,18 @@ h2 {
 
 .dot {
     display: block;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
+    background: #FF3F3F;
+    border-radius: 9999px
+}
+
+.dot-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
     background: #FF3F3F;
     border-radius: 9999px
 }
@@ -38,4 +48,18 @@ h2 {
 
 .fecha {
     color: #B4B4B4;
+}
+
+ul li {
+    list-style: "+";
+}
+
+#img {
+    width: 25%;
+}
+
+@media screen and (max-width: 1000px) {
+    #img {
+        width: 25% !important;
+    }
 }
