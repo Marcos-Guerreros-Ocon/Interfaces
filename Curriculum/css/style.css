@@ -1,0 +1,41 @@
+body {
+    font-family: 'Jetbrain Mono', monospace;
+}
+
+h1 {
+    font-family: 'Exo 2', monospace;
+    color: #FF3F3F;
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+h2 {
+    font-family: 'Exo 2', monospace;
+    font-weight: bold;
+    font-family: 20px;
+}
+
+.dot-holder {
+    margin-top: 2%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+.dot {
+    display: block;
+    width: 35px;
+    height: 35px;
+    background: #FF3F3F;
+    border-radius: 9999px
+}
+
+.datos-experiencia p,
+.datos-experiencia h3 {
+    margin: 0;
+}
+
+.fecha {
+    color: #B4B4B4;
+}
