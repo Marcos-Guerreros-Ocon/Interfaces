@@ -106,6 +106,10 @@ footer ul {
     color: white;
 }
 
+.iconos a {
+    color: rgb(255 255 255 / 0%);
+}
+
 @media screen and (min-width: 991px) {
     .hero {
         background-image: url("../res/bg-pc.png");
