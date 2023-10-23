@@ -1,5 +1,6 @@
 body {
     font-family: 'Jetbrain Mono', monospace;
+    background-color: #B4B4B4;
 }
 
 h1 {
@@ -58,6 +59,12 @@ ul li {
     width: 50%;
 }
 
+#curriculum {
+    background-color: white;
+    padding: 0px 20px;
+    box-shadow: 3px 3px 11px 1px rgba(0, 0, 0, 0.14);
+}
+
 @media screen and (min-width: 1000px) {
     #img {
         width: 25%;
@@ -66,4 +73,9 @@ ul li {
     .separador {
         display: none;
     }
+
+    .dot-icon-holder {
+        width: 25%;
+    }
+
 }
