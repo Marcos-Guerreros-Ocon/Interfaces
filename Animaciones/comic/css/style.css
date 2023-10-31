@@ -1,0 +1,89 @@
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+
+}
+
+img {
+    margin: 4px;
+}
+
+.primeraFila,
+.segundaFila,
+.terceraFila,
+.cuartaFila,
+.quitaFila,
+.sextaFila {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#escena1 {
+
+    transition: 3s;
+}
+
+#escena1:hover {
+    transform: cubic-bezier(1, 0, 0, .98);
+    transform: scale(2);
+
+}
+
+#escena2 {
+    opacity: 1;
+    transition-timing-function: ease-in;
+    transition: 2s;
+}
+
+#escena2:hover {
+    opacity: 0;
+
+}
+
+#a {
+    width: 226px;
+    height: 213px;
+    background-image: url(../img/escena3.png);
+    transition-timing-function: ease-in-out;
+    transition: translate 4s, opacity 4s, background-image 4s;
+    transition-delay: 0s, 1s, 2s;
+}
+
+#a:hover {
+    translate: 100px;
+    opacity: 0.1;
+    background-image: url(../img/escena3-1.png);
+
+}
+
+#escena4 {
+    transition: 2s
+}
+
+#escena4:hover {
+    transform-origin: top right;
+    transform: scale(0);
+}
+
+.terceraFila #escena5 {
+    transition: rotate 3s, ease-in transform 3s;
+}
+
+.terceraFila #escena6 {
+    transition: transform 3s;
+}
+
+.terceraFila:hover #escena5 {
+    rotate: -180deg;
+}
+
+.terceraFila:hover #escena6 {
+    transform-origin: bottom left;
+    transform: scale(1.2);
+}

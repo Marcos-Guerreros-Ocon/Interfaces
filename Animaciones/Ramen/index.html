@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #arte {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #arte:hover #hoguera {
+            content: url("hogueraEncendida.png");
+        }
+
+        #arte:hover #humo {
+            transition: all 1s 5s;
+            opacity: 1;
+        }
+
+
+        #arte:hover #ramenCocinado {
+            transition: all 1s 10s;
+            opacity: 1;
+        }
+
+        #arte:hover #ramenQuemado {
+            transition: all 1s 20s;
+            opacity: 1;
+        }
+
+        #ramen,
+        #ramenCocinado,
+        #ramenQuemado {
+            position: absolute;
+            top: 19%;
+            left: 39%;
+        }
+
+        #bol {
+            position: absolute;
+            top: 33%;
+            left: 39%;
+        }
+
+        #hoguera {
+            position: absolute;
+            top: 44%;
+        }
+
+        #humo,
+        #ramenCocinado,
+        #ramenQuemado {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="arte">
+        <img id="humo" src="humo.png" alt="">
+
+
+        <img id="ramen" src="ramenSolo.png" alt="">
+        <img id="ramenCocinado" src="ramenCocinado.png">
+        <img id="ramenQuemado" src="ramenSoloQuemado.png">
+
+
+
+
+        <img id="bol" src="bolSolo.png" alt="">
+        <img id="hoguera" src="hogueraApagada.png" alt="">
+    </div>
+
+</body>
+
+</html>
