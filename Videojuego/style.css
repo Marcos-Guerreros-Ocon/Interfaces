@@ -1,0 +1,186 @@
+body {
+    background: url("https://images6.alphacoders.com/124/1243346.png");
+    background-position: center center;
+    height: 99vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Minecraft', sans-serif;
+
+}
+
+h1 {
+    font-size: large;
+}
+
+p,
+label {
+    font-size: small;
+}
+
+.panelControles {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#formulariosControles {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row-reverse;
+}
+
+.panelControles button {
+    font-family: 'Minecraft', sans-serif;
+    line-height: 45px;
+    font-size: 15px;
+    background: linear-gradient(45deg, transparent 5%, #01afff 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    /* box-shadow: 6px 0px 0px #00E6F6;*/
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    margin: 10px;
+}
+
+.panelControles button div {
+    display: flex;
+    align-items: center;
+}
+
+#datos {
+    padding: 50px;
+    margin: 25px;
+    background: linear-gradient(45deg, rgb(34, 137, 233) 95%, transparent 5%);
+
+}
+
+#datos div {
+    display: flex;
+    justify-content: space-between;
+}
+
+meter {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 45px;
+}
+
+.combate {
+    background-color: red;
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    top: 50vh;
+    left: 50%;
+}
+
+#planeta1 {
+    top: 31%;
+    left: 16%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
+    background-image: url(res/planeta1.png);
+}
+
+#planeta2 {
+    top: 47%;
+    left: 40%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
+    background-image: url(res/planeta2.png);
+}
+
+#planeta3 {
+    top: 36%;
+    left: 63%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
+    background-image: url(res/planeta3.png);
+}
+
+#planeta4 {
+    top: 49%;
+    left: 84%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
+    background-image: url(res/planeta4.png);
+}
+
+.planeta:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+#bottom {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+#saltoEmergencia {
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#saltoEmergencia button {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.formularioControl {
+    padding: 45px;
+    background: linear-gradient(45deg, transparent 5%, #01afffb8 5%);
+}
+
+
+/**/
+
+
+/* CSS */
+.dialogo {
+    display: none;
+    position: fixed;
+
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.dialogo-contenido {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
