@@ -167,13 +167,13 @@ meter {
 /* CSS */
 .dialogo {
     display: none;
-    position: fixed;
-
+    position: absolute;
+    left: 18%;
+    top: 30%;
     padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+
 
 }
 
@@ -182,5 +182,21 @@ meter {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+}
+
+.derecha {
+    transform: rotate("0deg");
+}
+
+.arriba {
+    transform: rotate("90deg");
+}
+
+.izquierda {
+    transform: rotate("180deg");
+}
+
+.abajo {
+
+    transform: rotate("270deg");
 }

@@ -216,8 +216,8 @@
             <button type="button">-100 km/h</button><br>
             <label for="direction-slider">Dirección:</label>
             <input type="range" id="direction-slider" min="-180" max="180"><br>
-            <button type="button">Girar Izquierda</button>
-            <button type="button">Girar Derecha</button><br>
+            <button type="button" id="girarIzquierda">Girar Izquierda</button>
+            <button type="button" id="girarDerecha">Girar Derecha</button><br>
             <button type="button" onclick="ocultarTodasLasInterfaces()">Volver</button>
         </form>
         <!-- Interfaz del Arma -->
@@ -295,7 +295,8 @@
     <div id="miDialogo" class="dialogo">
         <div class="dialogo-contenido">
             <span class="cerrar">&times;</span>
-            <p>Este es un diálogo de ejemplo.</p>
+            <div id="mapaBatalla"></div>
+
         </div>
     </div>
 

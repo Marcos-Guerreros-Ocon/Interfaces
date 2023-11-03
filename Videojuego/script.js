@@ -6,6 +6,7 @@ let planetasVisitados = new Map();
 window.onload = () => {
     startTimer();
     startTimerLeft();
+    initButtonsGirar();
 };
 
 const reiniciarTiempo = () => {
@@ -122,6 +123,11 @@ function ocultarTodasLasInterfaces() {
 var dialogo = document.getElementById('miDialogo');
 var span = document.getElementsByClassName("cerrar")[0];
 
+span.onclick = function () {
+    dialogo.style.display = "none";
+
+}
+
 // Función para abrir el diálogo
 function abrirDialogo() {
     prepararPelea();
@@ -129,35 +135,64 @@ function abrirDialogo() {
 
 }
 
+const initButtonsGirar = () => {
+    document.getElementById("girarIzquierda").onclick = () => girarNave('izquerda');
+    document.getElementById("girarDerecha").onclick = () => girarNave('derecha');
+};
+
 
 const prepararPelea = () => {
     const campo = document.createElement("div");
+    document.getElementById("mapaBatalla").innerHTML = "";
 
-    campo.classList.add("campo");
+
     const tabla = document.createElement("table");
-    let pintado = false;
-    for (let i = 0; i < 8; i++) {
+    tabla.id = "tablaBatalla";
+
+    for (let i = 0; i < 9; i++) {
         const fila = document.createElement("tr");
-
-
         for (let j = 0; j < 12; j++) {
             const celda = document.createElement("td");
-            if (j > 4 && j < 8 && i == 4) {
-                if (!pintado) {
-                    celda.colSpan = 4;
-                    celda.innerHTML = "<img src='res/navePropia.png'>";
-                }
-                pintado = true;
-
-            }
-
             fila.appendChild(celda);
         }
-
         tabla.appendChild(fila);
     }
 
-    campo.appendChild(tabla);
-    document.querySelector(".dialogo-contenido").appendChild(campo);
+    tabla.rows[4].cells[4].innerHTML = "<img src='res/navePropia1.png' class='navePropia'>";
+    tabla.rows[4].cells[5].innerHTML = "<img src='res/navePropia2.png' class='navePropia'>";
+    tabla.rows[4].cells[6].innerHTML = "<img src='res/navePropia3.png' class='navePropia'>";
 
+    campo.appendChild(tabla);
+
+    document.querySelector("#mapaBatalla").appendChild(campo);
+
+};
+
+function girarNave(direccion) {
+    switch (direccion) {
+        case 'izquerda':
+            const tabla = document.getElementById("tablaBatalla");
+            tabla.rows[4].cells[4].innerHTML = "";
+            tabla.rows[4].cells[5].innerHTML = "";
+            tabla.rows[4].cells[6].innerHTML = "";
+
+            tabla.rows[3].cells[5].innerHTML = "<img src='res/navePropia1.png' class='navePropia'>";
+            tabla.rows[4].cells[5].innerHTML = "<img src='res/navePropia2.png' class='navePropia'>";
+            tabla.rows[5].cells[5].innerHTML = "<img src='res/navePropia3.png' class='navePropia'>";
+            document.querySelectorAll(".navePropia").forEach((nave) => {
+                let grados = 0;
+                if (nave.style.transform != "") {
+                    grados = nave.style.transform.split("(")[1].split("deg")[0];
+                }
+
+                grados = parseInt(grados) + 90;
+                console.log(grados);
+                nave.style.transform = "rotate(" + grados + "deg)";
+            });
+
+            break;
+        case 'derecha':
+
+            break;
+    }
 };
