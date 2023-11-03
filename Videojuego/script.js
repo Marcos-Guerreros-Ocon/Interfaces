@@ -172,23 +172,51 @@ function girarNave(direccion) {
     switch (direccion) {
         case 'izquerda':
             const tabla = document.getElementById("tablaBatalla");
-            tabla.rows[4].cells[4].innerHTML = "";
-            tabla.rows[4].cells[5].innerHTML = "";
-            tabla.rows[4].cells[6].innerHTML = "";
+            let grados = 0;
+            const nave1 = document.querySelectorAll(".navePropia")[0];
+            const nave2 = document.querySelectorAll(".navePropia")[1];
+            const nave3 = document.querySelectorAll(".navePropia")[2];
 
-            tabla.rows[3].cells[5].innerHTML = "<img src='res/navePropia1.png' class='navePropia'>";
-            tabla.rows[4].cells[5].innerHTML = "<img src='res/navePropia2.png' class='navePropia'>";
-            tabla.rows[5].cells[5].innerHTML = "<img src='res/navePropia3.png' class='navePropia'>";
-            document.querySelectorAll(".navePropia").forEach((nave) => {
-                let grados = 0;
-                if (nave.style.transform != "") {
-                    grados = nave.style.transform.split("(")[1].split("deg")[0];
-                }
 
-                grados = parseInt(grados) + 90;
-                console.log(grados);
-                nave.style.transform = "rotate(" + grados + "deg)";
-            });
+
+            if (nave1.style.transform != "") {
+                grados = nave1.style.transform.split("(")[1].split("deg")[0];
+            }
+
+            grados = parseInt(grados) + 90;
+            if (grados == 360) {
+                grados = 0;
+            }
+
+
+            nave1.style.transform = "rotate(" + grados + "deg)";
+            nave2.style.transform = "rotate(" + grados + "deg)";
+            nave3.style.transform = "rotate(" + grados + "deg)";
+
+            switch (grados) {
+                case 0:
+                    tabla.rows[4].cells[4].innerHTML = nave1.innerHTML;
+                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
+                    tabla.rows[4].cells[6].innerHTML = nave3.innerHTML;
+                case 90:
+                    tabla.rows[3].cells[5].innerHTML = nave1.innerHTML;
+                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
+                    tabla.rows[5].cells[5].innerHTML = nave3.innerHTML;
+                    break;
+                case 180:
+                    tabla.rows[4].cells[6].innerHTML = nave1.innerHTML;
+                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
+                    tabla.rows[4].cells[4].innerHTML = nave3.innerHTML;
+                    break;
+                case 270:
+                    tabla.rows[4].cells[6].innerHTML = nave1.innerHTML;
+                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
+                    tabla.rows[4].cells[4].innerHTML = nave3.innerHTML;
+                    break;
+
+            }
+
+
 
             break;
         case 'derecha':

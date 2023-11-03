@@ -51,7 +51,7 @@ label {
 }
 
 #datos {
-    padding: 50px;
+    padding: 25px;
     margin: 25px;
     background: linear-gradient(45deg, rgb(34, 137, 233) 95%, transparent 5%);
 
@@ -199,4 +199,13 @@ meter {
 .abajo {
 
     transform: rotate("270deg");
+}
+
+#tablaBatalla td {
+    height: 20px;
+}
+
+#tablaBatalla td img {
+
+    height: 20px;
 }
