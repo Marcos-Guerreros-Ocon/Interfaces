@@ -162,10 +162,10 @@
         </div>
     </div>
 
+    <div class="planeta" id="planeta0"></div>
     <div class="planeta" id="planeta1"></div>
     <div class="planeta" id="planeta2"></div>
     <div class="planeta" id="planeta3"></div>
-    <div class="planeta" id="planeta4"></div>
 
     <div id="formulariosControles">
         <!-- Interfaz del Escudo -->
@@ -181,7 +181,10 @@
             </select><br>
 
             <label>Energía:</label>
-            <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+            <div>
+                <p id="energy-meter-value"></p>
+                <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+            </div>
 
             <label for="proa-shield">Proa:</label>
             <input type="range" id="proa-shield" min="0" max="100"><br>
@@ -191,7 +194,7 @@
             <input type="range" id="babor-shield" min="0" max="100"><br>
             <label for="estribor-shield">Estribor:</label>
             <input type="range" id="estribor-shield" min="0" max="100"><br>
-            <button type="button">Igualar Todos</button>
+            <button type="button" id="btnIgualarEscudos">Igualar Todos</button>
             <button type="button" onclick="ocultarTodasLasInterfaces()">Volver</button>
         </form>
 
@@ -208,7 +211,10 @@
             </select><br>
 
             <label>Energía:</label>
-            <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+            <div>
+                <p id="energy-meter-value"></p>
+                <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+            </div>
 
             <label for="speed-slider">Velocidad:</label>
             <input type="range" id="speed-slider" min="0" max="1000" disabled><br>
@@ -233,8 +239,10 @@
             </select><br>
 
             <label>Energía:</label>
-            <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
-
+            <div>
+                <p id="energy-meter-value"></p>
+                <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+            </div>
             <input type="radio" id="weapon1" name="weapon">
             <label for="weapon1">Láseres</label><br>
             <input type="radio" id="weapon2" name="weapon">
@@ -283,7 +291,10 @@
             </select><br>
 
             <label>Energía:</label>
-            <meter id="energy-meter" min="0" max="100"></meter><br>
+            <div>
+                <p id="energy-meter-value"></p>
+                <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+            </div>
             <label for="proa-shield">Refrigerar motor:</label>
             <input type="range" id="refrigerarMotor" min="0" max="10"><br>
 
@@ -291,7 +302,13 @@
         </form>
     </div>
 
+    <!-- MODAL RECOMPENSA -->
+    <div id="modalRecompensa"></div>
+    <div id="modalBackDrop"></div>
+
+
     <!-- HTML -->
+    <div id="modalBatalla"></div>
     <div id="miDialogo" class="dialogo">
         <div class="dialogo-contenido">
             <span class="cerrar">&times;</span>
@@ -305,15 +322,24 @@
         <div id="datos">
             <div>
                 <label>Supervivientes:</label>
-                <meter id="survivor-meter" min="0" max="100"></meter>
+                <div>
+                    <p id="survivor-meter-value">0</p>
+                    <meter id="survivor-meter" min="0" max="100"></meter>
+                </div>
             </div>
             <div>
                 <label>Energía:</label>
-                <meter id="energy-meter" min="0" max="100"></meter>
+                <div>
+                    <p id="energy-meter-value"></p>
+                    <meter id="energy-meter" min="0" max="100"></meter>
+                </div>
             </div>
             <div>
                 <label>Integridad del casco:</label>
-                <meter id="damage-meter" min="0" max="100"></meter>
+                <div>
+                    <p id="damage-meter-value"></p>
+                    <meter id="damage-meter" min="0" max="100"></meter>
+                </div>
             </div>
             <div>
                 <label>Tiempo hasta el próximo escaneo Cylon:</label>
@@ -323,8 +349,11 @@
 
         <div id="saltoEmergencia">
             <label>Recalentamiento del motor de salto:</label>
-            <progress id="jump-progress" max="100"></progress><button type="button" id="btnSaltoEmergencia">SALTO DE
-                EMERGENCIA</button><br>
+            <div>
+                <p id="jump-progress-value"></p>
+                <progress id="jump-progress" max="100"></progress><button type="button" id="btnSaltoEmergencia">SALTO DE
+                    EMERGENCIA</button>
+            </div><br>
         </div>
     </div>
     <script src="script.js"></script>

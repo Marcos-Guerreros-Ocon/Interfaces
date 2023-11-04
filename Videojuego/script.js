@@ -13,6 +13,11 @@ const btnDisparar = document.getElementById("btnDisparar");
 const btnRecargar = document.getElementById("btnRecargar");
 const btnCambiarArma = document.getElementById("btnCambiarArma");
 const refrigeracion = document.getElementById("refrigerarMotor");
+const escudoProa = document.getElementById("proa-shield");
+const escudoPopa = document.getElementById("popa-shield");
+const escudoBabor = document.getElementById("babor-shield")
+const escudoEstribor = document.getElementById("estribor-shield");
+
 
 let gastoEnergia = 0;
 let planetasVisitados = new Map();
@@ -20,177 +25,81 @@ let tripulacion = [];
 let interval = null;
 let disparosLaser = 0;
 let refrigeracionAnterior = 0;
+let peleaPlaneta = new Map();
+
+
+let valorAntiguoProa = 25;
+let valorAntiguoPopa = 25;
+let valorAntiguoBabor = 25;
+let valorAntiguoEstribor = 25;
+
 
 window.onload = () => {
-    startTiempoRestante();
-    initButtons();
     cargarDatos();
-    timer();
+    startTiempoRestante();
     setDefaultValues();
-
-
+    cargarEventosPlanetas();
+    timer();
+    initButtons();
 };
 
+// BEGIN :: FUNCIONES GENERALES
 const setDefaultValues = () => {
     velocidad.value = 0;
     armaLaser.checked = true;
     refrigeracion.value = 0;
     progresoSalto.value = 100;
+    escudoProa.value = 25;
+    escudoPopa.value = 25;
+    escudoBabor.value = 25;
+    escudoEstribor.value = 25;
     document.getElementById("btnSaltar").disabled = true;
-};
 
-planets.forEach((planet) => {
-    planet.addEventListener('click', (event) => {
-        let posibilidad = Math.round(Math.random() * 100);
-
-        if (planetasVisitados.has(event.target.id)) {
-            posibilidad = planetasVisitados.get(event.target.id);
-        } else {
-            planetasVisitados.set(event.target.id, posibilidad);
-            abrirDialogo();
-        }
-
-        if (posibilidad < 50) {
-
-
-        } else {
-
-
-
-        }
-
+    document.getElementById("survivor-meter-value").innerHTML = supervivientes.value;
+    document.querySelectorAll("#energy-meter-value").forEach((campo) => {
+        campo.innerHTML = energia[0].value;
     });
+    document.getElementById("damage-meter-value").innerHTML = integridad.value;
 
-});
-
-
-
-
-
-// JavaScript
-var dialogo = document.getElementById('miDialogo');
-var span = document.getElementsByClassName("cerrar")[0];
-
-span.onclick = function () {
-    dialogo.style.display = "none";
-
-}
-
-// Función para abrir el diálogo
-function abrirDialogo() {
-    prepararPelea();
-    dialogo.style.display = "flex";
-
-}
-
-const initButtons = () => {
-    document.getElementById("girarIzquierda").onclick = () => girarNave('izquerda');
-    document.getElementById("girarDerecha").onclick = () => girarNave('derecha');
-    document.getElementById("btnSaltoEmergencia").onclick = () => accionSaltoEmergencia();
-    document.getElementById("bajarVelocidad").onclick = () => disminuirGastoEnergia();
-    document.getElementById("subirVelocidad").onclick = () => aumentarGastoEnergia();
-    btnCambiarArma.onclick = () => cambiarArma();
-    btnDisparar.onclick = () => disparar();
-    btnRecargar.onclick = () => recargarLaser();
-    refrigeracion.onchange = () => accionRefrigerar();
-    document.getElementById("btnSaltar").onclick = () => accionSalto();
 };
 
+const generarNumerosAleatorios = () => {
+    let num1 = Math.floor(Math.random() * 4);
+    let num2 = Math.floor(Math.random() * 4);
+    while (num2 === num1) {
+        num2 = Math.floor(Math.random() * 4);
+    }
+    return [num1, num2];
+};
 
-const prepararPelea = () => {
-    const campo = document.createElement("div");
-    document.getElementById("mapaBatalla").innerHTML = "";
+const cargarEventosPlanetas = () => {
+    planetasVisitados.clear();
+    let indexCombates = generarNumerosAleatorios();
+    let idPlanetaCombate = planets[indexCombates[0]].id;
+    let idPlanetaCombate2 = planets[indexCombates[1]].id;
 
+    planets.forEach((planeta) => {
+        if (planeta.id === idPlanetaCombate || planeta.id === idPlanetaCombate2) {
+            planeta.onclick = () => {
 
-    const tabla = document.createElement("table");
-    tabla.id = "tablaBatalla";
-
-    for (let i = 0; i < 9; i++) {
-        const fila = document.createElement("tr");
-        for (let j = 0; j < 12; j++) {
-            const celda = document.createElement("td");
-            fila.appendChild(celda);
+                abrirDialogoPelea(planeta.id);
+            }
+        } else {
+            planeta.onclick = () => {
+                abrirDialogoRecompensa(planeta.id);
+            }
         }
-        tabla.appendChild(fila);
-    }
-
-    tabla.rows[4].cells[4].innerHTML = "<img src='res/navePropia1.png' class='navePropia'>";
-    tabla.rows[4].cells[5].innerHTML = "<img src='res/navePropia2.png' class='navePropia'>";
-    tabla.rows[4].cells[6].innerHTML = "<img src='res/navePropia3.png' class='navePropia'>";
-
-    campo.appendChild(tabla);
-
-    document.querySelector("#mapaBatalla").appendChild(campo);
-
+    });
 };
 
-function girarNave(direccion) {
-    switch (direccion) {
-        case 'izquerda':
-            const tabla = document.getElementById("tablaBatalla");
-            let grados = 0;
-            const nave1 = document.querySelectorAll(".navePropia")[0];
-            const nave2 = document.querySelectorAll(".navePropia")[1];
-            const nave3 = document.querySelectorAll(".navePropia")[2];
-
-
-
-            if (nave1.style.transform != "") {
-                grados = nave1.style.transform.split("(")[1].split("deg")[0];
-            }
-
-            grados = parseInt(grados) + 90;
-            if (grados == 360) {
-                grados = 0;
-            }
-
-
-            nave1.style.transform = "rotate(" + grados + "deg)";
-            nave2.style.transform = "rotate(" + grados + "deg)";
-            nave3.style.transform = "rotate(" + grados + "deg)";
-
-            switch (grados) {
-                case 0:
-                    tabla.rows[4].cells[4].innerHTML = nave1.innerHTML;
-                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
-                    tabla.rows[4].cells[6].innerHTML = nave3.innerHTML;
-                case 90:
-                    tabla.rows[3].cells[5].innerHTML = nave1.innerHTML;
-                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
-                    tabla.rows[5].cells[5].innerHTML = nave3.innerHTML;
-                    break;
-                case 180:
-                    tabla.rows[4].cells[6].innerHTML = nave1.innerHTML;
-                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
-                    tabla.rows[4].cells[4].innerHTML = nave3.innerHTML;
-                    break;
-                case 270:
-                    tabla.rows[4].cells[6].innerHTML = nave1.innerHTML;
-                    tabla.rows[4].cells[5].innerHTML = nave2.innerHTML;
-                    tabla.rows[4].cells[4].innerHTML = nave3.innerHTML;
-                    break;
-
-            }
-
-
-
-            break;
-        case 'derecha':
-
-            break;
-    }
-};
-
-// Almacenar datos en el navegador
 const storeData = () => {
     sessionStorage.setItem("supervivientes", supervivientes.value);
     sessionStorage.setItem("energia", energia[0].value);
     sessionStorage.setItem("integridad", integridad.value);
     sessionStorage.setItem("misiles", misiles.value);
-    sessionStorage.setItem("tripulacion", JSON.stringify(tripulacion));
+    sessionStorage.setItem("tripulacion", tripulacion);
 };
 
-// contador de tiempo, no es editable, al cargar la página tiene un valor de entre 2 y 3 minutos. Cada segundo se descuenta un segundo.
 const startTiempoRestante = () => {
     let segundos = Math.ceil(Math.random() * (180 - 120) + 120);
     let minutos = Math.floor(segundos / 60);
@@ -222,13 +131,9 @@ const tiempoRestante = () => {
         segundos = "0" + segundos;
     }
 
-
-
-
     tiempoRestatnte.value = minutos + ":" + segundos;
 };
 
-// Se cargan los datos del navegador, si no hay datos se crean unos nuevos
 const cargarDatos = () => {
 
     if (getCookie("juego") === "") {
@@ -250,18 +155,346 @@ const cargarDatos = () => {
     tripulacion = sessionStorage.getItem("tripulacion");
 };
 
-/*
-const actualizarValues = () => {
-    supervivientes.value = supervivientes.value - 1;
-    energia.forEach((campo) => {
-        campo.value = campo.value - gastoEnergia;
+const initButtons = () => {
+    document.getElementById("girarIzquierda").onclick = () => girarNave('izquerda');
+    document.getElementById("girarDerecha").onclick = () => girarNave('derecha');
+    document.getElementById("btnSaltoEmergencia").onclick = () => accionSaltoEmergencia();
+    document.getElementById("bajarVelocidad").onclick = () => disminuirGastoEnergia();
+    document.getElementById("subirVelocidad").onclick = () => aumentarGastoEnergia();
+    btnCambiarArma.onclick = () => cambiarArma();
+    btnDisparar.onclick = () => disparar();
+    btnRecargar.onclick = () => recargarLaser();
+    refrigeracion.onchange = () => accionRefrigerar();
+    document.getElementById("btnIgualarEscudos").onclick = () => igualarEscudos();
+    escudos();
+
+
+};
+
+const timer = () => {
+    const a = setInterval(() => {
+        actuliazarEnergia();
+        tiempoRestante();
+        storeData();
+        enfriamientoMotor();
+        if (isOver()) {
+            clearInterval(a);
+            alert("GAME OVER");
+            setCookie("juego", "true", -1);
+        }
+
+    }, 1000);
+};
+
+const isOver = () => {
+    if (supervivientes.value == 0 || energia[0].value == 0 || integridad.value == 0 || tiempoRestatnte.value == "00:00") {
+        return true;
+    }
+    return false;
+};
+// END :: FUNCIONES GENERALES
+
+// BEGIN :: FUNCIONES DE LOS MODALES
+function abrirDialogoRecompensa(id) {
+    if (planetasVisitados.has(id)) {
+        return;
+    }
+
+    planetasVisitados.set(id, true);
+
+    const titulo = document.createElement("h2");
+    titulo.innerHTML = "¡Has encontrado una recompensa!";
+
+    const texto = document.createElement("p");
+
+    let recompensa = Math.floor(Math.random() * 3) + 1;
+    let cantidad = Math.floor(Math.random() * 20) + 5;
+    switch (recompensa) {
+        case 1:
+            supervivientes.value = parseInt(supervivientes.value) + cantidad;
+            texto.innerHTML = "Has encontrado " + cantidad + " supervivientes";
+            document.getElementById("survivor-meter-value").innerHTML = supervivientes.value;
+            break;
+        case 2:
+            energia.forEach((campo) => {
+                campo.value = parseInt(campo.value) + cantidad;;
+            });
+            texto.innerHTML = "Has encontrado " + cantidad + " energía";
+            document.getElementById("energy-meter-value").innerHTML = energia[0].value;
+            break;
+        case 3:
+            integridad.value = parseInt(integridad.value) + cantidad;
+            texto.innerHTML = "Has recuperado " + cantidad + " de integridad";
+            document.getElementById("damage-meter-value").innerHTML = integridad.value;
+            break;
+        case 4:
+            misiles.value = parseInt(misiles.value) + cantidad;
+            texto.innerHTML = "Has encontrado " + cantidad + " misiles";
+            break;
+    }
+    if (energia[0].value > 100) {
+        energia.forEach((campo) => {
+            campo.value = 100;
+        });
+    }
+    if (integridad.value > 100) {
+        integridad.value = 100;
+    }
+    if (misiles.value > 100) {
+        misiles.value = 100;
+    }
+    if (supervivientes.value > 100) {
+        supervivientes.value = 100;
+    }
+
+
+    const btnCerrar = document.createElement("button");
+    btnCerrar.id = "btnCerrarReconmpensa";
+    btnCerrar.innerHTML = "Cerrar";
+    btnCerrar.onclick = () => cerrarDialogoRecompensa();
+
+    document.getElementById("modalRecompensa").innerHTML = "";
+    document.getElementById("modalRecompensa").appendChild(titulo);
+    document.getElementById("modalRecompensa").appendChild(texto);
+    document.getElementById("modalRecompensa").appendChild(btnCerrar);
+
+    document.getElementById("modalRecompensa").style.display = "block";
+    document.getElementById("modalBackDrop").style.display = "block";
+
+
+}
+function abrirDialogoPelea(id) {
+    if (planetasVisitados.has(id)) {
+        return;
+    }
+
+    const btnCerrar = document.createElement("button");
+    btnCerrar.id = "btnCerrarPelea";
+    btnCerrar.innerHTML = "Cerrar";
+    btnCerrar.onclick = () => cerrarDialogoPelea();
+
+    document.getElementById("modalBatalla").innerHTML = "";
+    prepararPelea();
+
+    document.getElementById("modalBatalla").appendChild(btnCerrar);
+    document.getElementById("modalBatalla").style.display = "block";
+}
+function cerrarDialogoPelea() {
+    document.getElementById("modalBatalla").style.display = "none";
+}
+
+function cerrarDialogoRecompensa() {
+    document.getElementById("modalRecompensa").style.display = "none";
+    document.getElementById("modalBackDrop").style.display = "none";
+}
+// END :: FUNCIONES DE LOS MODALES
+
+// BEGIN :: FUNCIONES DE LA PELEA
+const prepararPelea = (tablaLista) => {
+    if (tablaLista !== undefined) {
+        document.getElementById("mapaBatalla").innerHTML = "";
+        document.getElementById("mapaBatalla").appendChild(tabla);
+        return;
+    }
+
+    const indexPosicion = generarNumerosAleatorios();
+    const posiblesPosiciones = ["arriba", "abajo", "izquerda", "derecha"];
+    const posicion0 = posiblesPosiciones[indexPosicion[0]];
+    const posicion1 = posiblesPosiciones[indexPosicion[1]];
+    const posiciones = [posicion0, posicion1];
+
+    const campo = document.createElement("div");
+    document.getElementById("mapaBatalla").innerHTML = "";
+
+
+    const tabla = document.createElement("table");
+    tabla.id = "tablaBatalla";
+
+    for (let i = 0; i < 9; i++) {
+        const fila = document.createElement("tr");
+        for (let j = 0; j < 7; j++) {
+            const celda = document.createElement("td");
+            fila.appendChild(celda);
+        }
+        tabla.appendChild(fila);
+    }
+
+
+    posiciones.forEach((posicion) => {
+        switch (posicion) {
+            case 'arriba':
+                tabla.rows[1].cells[3].innerHTML = "<img src='res/naveEnemiga.png' class='naveEnemiga'>";
+                break;
+            case 'abajo':
+                tabla.rows[7].cells[3].innerHTML = "<img src='res/naveEnemiga.png' class='naveEnemiga'>";
+                break;
+            case 'izquerda':
+                tabla.rows[4].cells[0].innerHTML = "<img src='res/naveEnemiga.png' class='naveEnemiga'>";
+                break;
+            case 'derecha':
+                tabla.rows[4].cells[6].innerHTML = "<img src='res/naveEnemiga.png' class='naveEnemiga'>";
+                break;
+        }
     });
 
-    integridad.value = integridad.value - 1;
-    misiles.value = misiles.value - 1;
-    tripulacion = tripulacion - 1;
+
+    tabla.rows[4].cells[2].innerHTML = "<img src='res/navePropia1.png' class='navePropia'>";
+    tabla.rows[4].cells[3].innerHTML = "<img src='res/navePropia2.png' class='navePropia'>";
+    tabla.rows[4].cells[4].innerHTML = "<img src='res/navePropia3.png' class='navePropia'>";
+
+
+
+    campo.appendChild(tabla);
+
+    document.querySelector("#modalBatalla").appendChild(campo);
+
 };
-*/
+
+let grados = 0;
+function girarNave(direccion) {
+    const tabla = document.getElementById("tablaBatalla");
+
+    const nave1 = document.querySelectorAll(".navePropia")[0];
+    const nave2 = document.querySelectorAll(".navePropia")[1];
+    const nave3 = document.querySelectorAll(".navePropia")[2];
+    switch (direccion) {
+        case 'izquerda':
+            grados += 90;
+            if (grados == 360) {
+                grados = 0;
+            }
+
+            switch (grados) {
+                case 0:
+                    tabla.rows[4].cells[2].appendChild(nave3);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[4].cells[4].appendChild(nave1);
+                    break;
+                case 90:
+                    tabla.rows[3].cells[3].appendChild(nave1);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[5].cells[3].appendChild(nave3);
+                    break;
+                case 180:
+                    tabla.rows[4].cells[2].appendChild(nave3);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[4].cells[4].appendChild(nave1);
+                    break;
+                case 270:
+                    tabla.rows[3].cells[3].appendChild(nave1);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[5].cells[3].appendChild(nave3);
+                    break;
+            }
+
+            break;
+        case 'derecha':
+            grados -= 90;
+            if (grados == -90) {
+                grados = 270;
+            }
+
+            switch (grados) {
+                case 0:
+                    tabla.rows[4].cells[2].appendChild(nave1);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[4].cells[4].appendChild(nave3);
+                    break;
+                case 90:
+                    tabla.rows[3].cells[3].appendChild(nave3);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[5].cells[3].appendChild(nave1);
+                    break;
+                case 180:
+                    tabla.rows[4].cells[2].appendChild(nave1);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[4].cells[4].appendChild(nave3);
+                    break;
+                case 270:
+                    tabla.rows[3].cells[3].appendChild(nave3);
+                    tabla.rows[4].cells[3].appendChild(nave2);
+                    tabla.rows[5].cells[3].appendChild(nave1);
+                    break;
+            }
+
+            break;
+    }
+    nave1.style.transform = "rotate(" + grados + "deg)";
+    nave2.style.transform = "rotate(" + grados + "deg)";
+    nave3.style.transform = "rotate(" + grados + "deg)";
+
+};
+// END :: FUNCIONES DE LA PELEA
+
+// BEGIN :: FUNCIONES DE LOS ESCUDOS
+
+const escudos = () => {
+    escudoProa.oninput = () => {
+        const valorEscudoBabor = parseInt(escudoBabor.value);
+        const valorEscudoProa = parseInt(escudoProa.value);
+        const valorEscudoPopa = parseInt(escudoPopa.value);
+        const valorEscudoEstribor = parseInt(escudoEstribor.value);
+
+        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
+            escudoProa.value = valorAntiguoProa;
+        } else {
+            valorAntiguoProa = valorEscudoProa;
+        }
+    };
+
+    escudoPopa.oninput = () => {
+        const valorEscudoBabor = parseInt(escudoBabor.value);
+        const valorEscudoProa = parseInt(escudoProa.value);
+        const valorEscudoPopa = parseInt(escudoPopa.value);
+        const valorEscudoEstribor = parseInt(escudoEstribor.value);
+
+        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
+            escudoPopa.value = valorAntiguoPopa;
+        } else {
+            valorAntiguoPopa = valorEscudoPopa;
+        }
+    };
+
+    escudoBabor.oninput = () => {
+        const valorEscudoBabor = parseInt(escudoBabor.value);
+        const valorEscudoProa = parseInt(escudoProa.value);
+        const valorEscudoPopa = parseInt(escudoPopa.value);
+        const valorEscudoEstribor = parseInt(escudoEstribor.value);
+
+        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
+            escudoBabor.value = valorAntiguoBabor;
+        } else {
+            valorAntiguoBabor = valorEscudoBabor;
+        }
+    };
+
+    escudoEstribor.oninput = () => {
+        const valorEscudoBabor = parseInt(escudoBabor.value);
+        const valorEscudoProa = parseInt(escudoProa.value);
+        const valorEscudoPopa = parseInt(escudoPopa.value);
+        const valorEscudoEstribor = parseInt(escudoEstribor.value);
+
+        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
+            escudoEstribor.value = valorAntiguoEstribor;
+        } else {
+            valorAntiguoEstribor = valorEscudoEstribor;
+        }
+    };
+
+};
+
+const igualarEscudos = () => {
+    valorAntiguoBabor = 25;
+    valorAntiguoEstribor = 25;
+    valorAntiguoPopa = 25;
+    valorAntiguoProa = 25;
+    escudoBabor.value = 25;
+    escudoEstribor.value = 25;
+    escudoPopa.value = 25;
+    escudoProa.value = 25;
+};
+// END :: FUNCIONES DE LOS ESCUDOS
+
 const aumentarGastoEnergia = () => {
     gastoEnergia = gastoEnergia + 1;
     velocidad.value = 100 * gastoEnergia;
@@ -277,6 +510,9 @@ const disminuirGastoEnergia = () => {
 const actuliazarEnergia = () => {
     energia.forEach((campo) => {
         campo.value = campo.value - gastoEnergia;
+        document.querySelectorAll("#energy-meter-value").forEach((campo) => {
+            campo.innerHTML = energia[0].value;
+        });
     });
 };
 
@@ -347,6 +583,7 @@ const accionSalto = () => {
     storeData();
     startTiempoRestante();
     setDefaultValues();
+    cargarEventosPlanetas();
 };
 
 const accionSaltoEmergencia = () => {
@@ -372,30 +609,9 @@ const accionSaltoEmergencia = () => {
     storeData();
     startTiempoRestante();
     setDefaultValues();
+    cargarEventosPlanetas();
 };
 // END :: FUNCIONES DEL MOTOR DE SALTO
-
-const timer = () => {
-    const a = setInterval(() => {
-        actuliazarEnergia();
-        tiempoRestante();
-        storeData();
-        enfriamientoMotor();
-        if (isOver()) {
-            clearInterval(a);
-            alert("GAME OVER");
-            setCookie("juego", "true", -1);
-        }
-
-    }, 1000);
-};
-
-const isOver = () => {
-    if (supervivientes.value == 0 || energia[0].value == 0 || integridad.value == 0 || tiempoRestatnte.value == "00:00") {
-        return true;
-    }
-    return false;
-};
 
 // BEGIN :: FUNCIONES DE LAS COOKIES
 function setCookie(key, value, day) {
@@ -418,10 +634,7 @@ function getCookie(key) {
         }
     }
     return "";
-}
-function destroyCookie(key) {
-    document.cookie = key + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
+};
 // END :: FUNCIONES DE LAS COOKIES
 
 // BEGIN :: FUNCIONES DE LA INTERFAZ

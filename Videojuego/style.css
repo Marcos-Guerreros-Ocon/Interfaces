@@ -77,7 +77,7 @@ meter {
     left: 50%;
 }
 
-#planeta1 {
+#planeta0 {
     top: 31%;
     left: 16%;
     position: absolute;
@@ -87,7 +87,7 @@ meter {
     background-image: url(res/planeta1.png);
 }
 
-#planeta2 {
+#planeta1 {
     top: 47%;
     left: 40%;
     position: absolute;
@@ -97,7 +97,7 @@ meter {
     background-image: url(res/planeta2.png);
 }
 
-#planeta3 {
+#planeta2 {
     top: 36%;
     left: 63%;
     position: absolute;
@@ -107,7 +107,7 @@ meter {
     background-image: url(res/planeta3.png);
 }
 
-#planeta4 {
+#planeta3 {
     top: 49%;
     left: 84%;
     position: absolute;
@@ -202,10 +202,56 @@ meter {
 }
 
 #tablaBatalla td {
-    height: 20px;
+    width: 35px;
+    height: 35px;
 }
 
 #tablaBatalla td img {
+    width: 35px;
+    height: 35px;
+}
 
-    height: 20px;
+#modalRecompensa {
+    display: none;
+    padding: 45px;
+    z-index: 20;
+    background: linear-gradient(45deg, transparent 5%, #01afffb8 5%);
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    top: 25%;
+    left: 25%;
+}
+
+#modalBatalla {
+    display: none;
+    padding: 23px;
+    z-index: 20;
+    background: linear-gradient(45deg, transparent 5%, #01afffb8 5%);
+    position: absolute;
+    width: 19%;
+    height: 42%;
+    top: 14%;
+    left: 19%;
+}
+
+#modalBackDrop {
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 99vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+#campoBatalla table {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
