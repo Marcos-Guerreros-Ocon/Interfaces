@@ -159,6 +159,7 @@ const initButtons = () => {
     document.getElementById("girarIzquierda").onclick = () => girarNave('izquerda');
     document.getElementById("girarDerecha").onclick = () => girarNave('derecha');
     document.getElementById("btnSaltoEmergencia").onclick = () => accionSaltoEmergencia();
+    document.getElementById("btnSaltar").onclick = () => accionSalto();
     document.getElementById("bajarVelocidad").onclick = () => disminuirGastoEnergia();
     document.getElementById("subirVelocidad").onclick = () => aumentarGastoEnergia();
     btnCambiarArma.onclick = () => cambiarArma();
