@@ -353,77 +353,31 @@ const prepararPelea = (tablaLista) => {
 let grados = 0;
 function girarNave(direccion) {
     const tabla = document.getElementById("tablaBatalla");
+    const naves = document.querySelectorAll(".navePropia");
 
-    const nave1 = document.querySelectorAll(".navePropia")[0];
-    const nave2 = document.querySelectorAll(".navePropia")[1];
-    const nave3 = document.querySelectorAll(".navePropia")[2];
-    switch (direccion) {
-        case 'izquerda':
-            grados += 90;
-            if (grados == 360) {
-                grados = 0;
-            }
+    grados = direccion === 'izquerda' ? (grados - 90 + 360) % 360 : (grados + 90) % 360;
 
-            switch (grados) {
-                case 0:
-                    tabla.rows[4].cells[2].appendChild(nave3);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[4].cells[4].appendChild(nave1);
-                    break;
-                case 90:
-                    tabla.rows[3].cells[3].appendChild(nave1);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[5].cells[3].appendChild(nave3);
-                    break;
-                case 180:
-                    tabla.rows[4].cells[2].appendChild(nave3);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[4].cells[4].appendChild(nave1);
-                    break;
-                case 270:
-                    tabla.rows[3].cells[3].appendChild(nave1);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[5].cells[3].appendChild(nave3);
-                    break;
-            }
+    const posiciones = {
+        izquerda: {
+            0: [[4, 2], [4, 3], [4, 4]],
+            90: [[5, 3], [4, 3], [3, 3]],
+            180: [[4, 2], [4, 3], [4, 4]],
+            270: [[5, 3], [4, 3], [3, 3]]
+        },
+        derecha: {
+            0: [[4, 4], [4, 3], [4, 2]],
+            90: [[3, 3], [4, 3], [5, 3]],
+            180: [[4, 4], [4, 3], [4, 2]],
+            270: [[3, 3], [4, 3], [5, 3]]
+        }
+    };
 
-            break;
-        case 'derecha':
-            grados -= 90;
-            if (grados == -90) {
-                grados = 270;
-            }
-
-            switch (grados) {
-                case 0:
-                    tabla.rows[4].cells[2].appendChild(nave1);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[4].cells[4].appendChild(nave3);
-                    break;
-                case 90:
-                    tabla.rows[3].cells[3].appendChild(nave3);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[5].cells[3].appendChild(nave1);
-                    break;
-                case 180:
-                    tabla.rows[4].cells[2].appendChild(nave1);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[4].cells[4].appendChild(nave3);
-                    break;
-                case 270:
-                    tabla.rows[3].cells[3].appendChild(nave3);
-                    tabla.rows[4].cells[3].appendChild(nave2);
-                    tabla.rows[5].cells[3].appendChild(nave1);
-                    break;
-            }
-
-            break;
-    }
-    nave1.style.transform = "rotate(" + grados + "deg)";
-    nave2.style.transform = "rotate(" + grados + "deg)";
-    nave3.style.transform = "rotate(" + grados + "deg)";
-
-};
+    naves.forEach((nave, index) => {
+        const [fila, columna] = posiciones[direccion][grados][index];
+        tabla.rows[fila].cells[columna].appendChild(nave);
+        nave.style.transform = `rotate(${grados}deg)`;
+    });
+}
 // END :: FUNCIONES DE LA PELEA
 
 // BEGIN :: FUNCIONES DE LOS ESCUDOS
