@@ -180,10 +180,10 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía:</label>
+            <label>Energía: <span id="energy-meter-value"></span></label>
             <div>
-                <p id="energy-meter-value"></p>
-                <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+
+                <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
 
             <label for="proa-shield">Proa:</label>
@@ -210,9 +210,8 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía:</label>
+            <label>Energía: <label>Energía: <span id="energy-meter-value"></span></label></label>
             <div>
-                <p id="energy-meter-value"></p>
                 <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
             </div>
 
@@ -238,10 +237,10 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía:</label>
+            <label>Energía: <label>Energía: <span id="energy-meter-value"></span></label></label>
             <div>
                 <p id="energy-meter-value"></p>
-                <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+                <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
             <input type="radio" id="weapon1" name="weapon">
             <label for="weapon1">Láseres</label><br>
@@ -290,10 +289,9 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía:</label>
+            <label>Energía: <label>Energía: <span id="energy-meter-value"></span></label></label>
             <div>
-                <p id="energy-meter-value"></p>
-                <meter id="energy-meter" min="0" max="100" value="50"></meter><br>
+                <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
             <label for="proa-shield">Refrigerar motor:</label>
             <input type="range" id="refrigerarMotor" min="0" max="10"><br>
@@ -324,21 +322,21 @@
                 <label>Supervivientes:</label>
                 <div>
                     <p id="survivor-meter-value">0</p>
-                    <meter id="survivor-meter" min="0" max="100"></meter>
+                    <meter id="survivor-meter" min="0" max="100" low="25" optimum="75" high="50"> </meter>
                 </div>
             </div>
             <div>
                 <label>Energía:</label>
                 <div>
                     <p id="energy-meter-value"></p>
-                    <meter id="energy-meter" min="0" max="100"></meter>
+                    <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
                 </div>
             </div>
             <div>
                 <label>Integridad del casco:</label>
                 <div>
                     <p id="damage-meter-value"></p>
-                    <meter id="damage-meter" min="0" max="100"></meter>
+                    <meter id="damage-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
                 </div>
             </div>
             <div>
@@ -349,10 +347,11 @@
 
         <div id="saltoEmergencia">
             <label>Recalentamiento del motor de salto:</label>
+            <progress id="jump-progress" max="100"></progress><button type="button" id="btnSaltoEmergencia">SALTO DE
+                EMERGENCIA</button>
             <div>
                 <p id="jump-progress-value"></p>
-                <progress id="jump-progress" max="100"></progress><button type="button" id="btnSaltoEmergencia">SALTO DE
-                    EMERGENCIA</button>
+
             </div><br>
         </div>
     </div>

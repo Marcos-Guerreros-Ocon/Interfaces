@@ -531,6 +531,10 @@ const enfriamientoMotor = () => {
     if (progresoSalto.value > 0) {
         progresoSalto.value = progresoSalto.value - (1 + parseInt(refrigeracion.value));
     }
+    if (progresoSalto.value == 0) {
+        document.getElementById("btnSaltar").disabled = false;
+
+    }
 }
 
 const accionSalto = () => {
