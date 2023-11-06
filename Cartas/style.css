@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.baraja {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.carta {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 265px;
+    height: 370px;
+    transition: all 0.5s;
+}
+
+.carta>div {
+
+    width: 265px;
+    height: 370px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.reverso,
+.anverso {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.reverso {
+    background-image: url('res/reversoCarta.jpg');
+    z-index: 1;
+    transition: all 0.5s;
+}
+
+.anverso {
+    z-index: 0;
+    transition: all 0.5s;
+    transform: rotateY(180deg);
+}
+
+
+
+.carta6 .anverso {
+    background-image: url('res/carta6.jfif');
+}
+
+.carta5 .anverso {
+    background-image: url('res/carta5.jfif');
+}
+
+.carta4 .anverso {
+    background-image: url('res/carta4.jfif');
+}
+
+.carta3 .anverso {
+    background-image: url('res/carta3.jfif');
+}
+
+.carta2 .anverso {
+    background-image: url('res/carta2.jfif');
+}
+
+.carta1 .anverso {
+    background-image: url('res/carta1.jfif');
+}
+
+
+.carta:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.carta.girada:hover {
+    cursor: default;
+}
+
+.girada {
+    opacity: 1;
+    transform: rotateY(180deg);
+}
+
+.girada .anverso {
+    z-index: 1;
+}
+
+.girada .reverso {
+    z-index: 0;
+}
