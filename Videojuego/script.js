@@ -28,12 +28,6 @@ let refrigeracionAnterior = 0;
 let peleaPlaneta = new Map();
 
 
-let valorAntiguoProa = 25;
-let valorAntiguoPopa = 25;
-let valorAntiguoBabor = 25;
-let valorAntiguoEstribor = 25;
-
-
 window.onload = () => {
     cargarDatos();
     startTiempoRestante();
@@ -168,8 +162,6 @@ const initButtons = () => {
     refrigeracion.onchange = () => accionRefrigerar();
     document.getElementById("btnIgualarEscudos").onclick = () => igualarEscudos();
     escudos();
-
-
 };
 
 const timer = () => {
@@ -383,6 +375,7 @@ function girarNave(direccion) {
 
 // BEGIN :: FUNCIONES DE LOS ESCUDOS
 
+
 const escudos = () => {
     escudoProa.oninput = () => {
         const valorEscudoBabor = parseInt(escudoBabor.value);
@@ -522,6 +515,8 @@ const accionRefrigerar = () => {
     gastoEnergia = gastoEnergia - refrigeracionAnterior + refrigeracion.value;
     refrigeracionAnterior = refrigeracion.value;
 
+
+
     if (progresoSalto.value == 0) {
         document.getElementById("btnSaltar").disabled = false;
     }
@@ -531,6 +526,17 @@ const enfriamientoMotor = () => {
     if (progresoSalto.value > 0) {
         progresoSalto.value = progresoSalto.value - (1 + parseInt(refrigeracion.value));
     }
+    if (progresoSalto.value >= 50) {
+        progresoSalto.classList = [];
+        progresoSalto.classList.add("rojo");
+    } else if (progresoSalto.value >= 25) {
+        progresoSalto.classList = [];
+        progresoSalto.classList.add("amarillo");
+        progresoSalto.style.background = "yellow";
+    } else {
+        progresoSalto.classList = [];
+    }
+
     if (progresoSalto.value == 0) {
         document.getElementById("btnSaltar").disabled = false;
 
