@@ -257,16 +257,28 @@ label {
     border: 2px solid black;
 }
 
-progress.rojo::-webkit-progress-value {
+progress::-webkit-progress-value {
+    background: #00FF00;
+}
+
+progress {
+    background: #00FF00;
+
+}
+
+.rojo::-webkit-progress-value {
     background: #F00;
 }
 
+.rojo {
+    background: #F00;
+}
 
 progress.amarillo::-webkit-progress-value {
     background: #FF0;
+
 }
 
-
-progress::-webkit-progress-value {
-    background: #00FF00;
+.amarillo {
+    background: #FF0;
 }

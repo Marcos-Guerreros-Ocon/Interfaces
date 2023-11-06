@@ -18,7 +18,6 @@ const escudoPopa = document.getElementById("popa-shield");
 const escudoBabor = document.getElementById("babor-shield")
 const escudoEstribor = document.getElementById("estribor-shield");
 
-
 let gastoEnergia = 0;
 let planetasVisitados = new Map();
 let tripulacion = [];
@@ -27,6 +26,12 @@ let disparosLaser = 0;
 let refrigeracionAnterior = 0;
 let peleaPlaneta = new Map();
 
+const sliders = {
+    proa: document.getElementById("proa-shield"),
+    popa: document.getElementById("popa-shield"),
+    babor: document.getElementById("babor-shield"),
+    estribor: document.getElementById("estribor-shield"),
+};
 
 window.onload = () => {
     cargarDatos();
@@ -161,7 +166,12 @@ const initButtons = () => {
     btnRecargar.onclick = () => recargarLaser();
     refrigeracion.onchange = () => accionRefrigerar();
     document.getElementById("btnIgualarEscudos").onclick = () => igualarEscudos();
-    escudos();
+
+    for (const sliderName in sliders) {
+        sliders[sliderName].addEventListener("input", function () {
+            updateSliders(sliderName);
+        });
+    }
 };
 
 const timer = () => {
@@ -374,63 +384,28 @@ function girarNave(direccion) {
 // END :: FUNCIONES DE LA PELEA
 
 // BEGIN :: FUNCIONES DE LOS ESCUDOS
+const updateSliders = (updatedSlider) => {
+    let totalCurrentValue = 0;
 
 
-const escudos = () => {
-    escudoProa.oninput = () => {
-        const valorEscudoBabor = parseInt(escudoBabor.value);
-        const valorEscudoProa = parseInt(escudoProa.value);
-        const valorEscudoPopa = parseInt(escudoPopa.value);
-        const valorEscudoEstribor = parseInt(escudoEstribor.value);
+    for (const sliderName in sliders) {
+        console.log(sliderName);
+        totalCurrentValue += parseInt(sliders[sliderName].value);
+    }
 
-        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
-            escudoProa.value = valorAntiguoProa;
-        } else {
-            valorAntiguoProa = valorEscudoProa;
+    const adjustment = 100 - totalCurrentValue;
+
+    const otherSlidersCount = Object.keys(sliders).length - 1;
+    const sharedAdjustment = adjustment / otherSlidersCount;
+
+    for (const sliderName in sliders) {
+        if (sliderName !== updatedSlider) {
+            sliders[sliderName].value = (parseInt(sliders[sliderName].value) + sharedAdjustment).toFixed(2);
         }
-    };
+    }
 
-    escudoPopa.oninput = () => {
-        const valorEscudoBabor = parseInt(escudoBabor.value);
-        const valorEscudoProa = parseInt(escudoProa.value);
-        const valorEscudoPopa = parseInt(escudoPopa.value);
-        const valorEscudoEstribor = parseInt(escudoEstribor.value);
-
-        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
-            escudoPopa.value = valorAntiguoPopa;
-        } else {
-            valorAntiguoPopa = valorEscudoPopa;
-        }
-    };
-
-    escudoBabor.oninput = () => {
-        const valorEscudoBabor = parseInt(escudoBabor.value);
-        const valorEscudoProa = parseInt(escudoProa.value);
-        const valorEscudoPopa = parseInt(escudoPopa.value);
-        const valorEscudoEstribor = parseInt(escudoEstribor.value);
-
-        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
-            escudoBabor.value = valorAntiguoBabor;
-        } else {
-            valorAntiguoBabor = valorEscudoBabor;
-        }
-    };
-
-    escudoEstribor.oninput = () => {
-        const valorEscudoBabor = parseInt(escudoBabor.value);
-        const valorEscudoProa = parseInt(escudoProa.value);
-        const valorEscudoPopa = parseInt(escudoPopa.value);
-        const valorEscudoEstribor = parseInt(escudoEstribor.value);
-
-        if (valorEscudoProa + valorEscudoPopa + valorEscudoBabor + valorEscudoEstribor > 100) {
-            escudoEstribor.value = valorAntiguoEstribor;
-        } else {
-            valorAntiguoEstribor = valorEscudoEstribor;
-        }
-    };
-
-};
-
+    sliders[updatedSlider].value = (100 - (totalCurrentValue - parseInt(sliders[updatedSlider].value))).toFixed(2);
+}
 const igualarEscudos = () => {
     valorAntiguoBabor = 25;
     valorAntiguoEstribor = 25;
@@ -525,6 +500,7 @@ const accionRefrigerar = () => {
 const enfriamientoMotor = () => {
     if (progresoSalto.value > 0) {
         progresoSalto.value = progresoSalto.value - (1 + parseInt(refrigeracion.value));
+        document.getElementById("jump-progress-value").innerHTML = progresoSalto.value + "%";
     }
     if (progresoSalto.value >= 50) {
         progresoSalto.classList = [];
@@ -637,3 +613,4 @@ function ocultarTodasLasInterfaces() {
 }
 
 // END :: FUNCIONES DE LA INTERFAZ
+
