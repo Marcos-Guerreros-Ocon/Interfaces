@@ -46,6 +46,13 @@ body:hover #jarra {
 }
 
 
+body:hover #liquidoVertido {
+    animation: liquidoCaer 5s;
+    animation-delay: 2.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
 #jarra {
     position: absolute;
     top: 50px;
@@ -71,7 +78,6 @@ body:hover #jarra {
     transform: rotate(45deg);
 
     opacity: 0;
-
 }
 
 @keyframes pocion {
@@ -99,4 +105,12 @@ body:hover #jarra {
     }
 }
 
-@keyframes liquidoCaer {}
+@keyframes liquidoCaer {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

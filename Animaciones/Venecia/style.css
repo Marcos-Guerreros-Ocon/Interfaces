@@ -1,17 +1,3 @@
-#gondola {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    background-image: url(gondola.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 3;
-
-}
-
 #remo {
     position: absolute;
     top: 61px;
@@ -22,12 +8,19 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 2;
     animation: movimientoRemo 1s infinite linear;
 
 }
 
 #conjunto {
+    top: 120px;
+    left: 0;
+    width: 200px;
+    height: 125px;
+    background-image: url(gondola.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     animation: movimentoGondola 10s linear;
     animation-fill-mode: forwards;
@@ -39,27 +32,27 @@
 
 #agua {
     position: absolute;
-    top: 125px;
+    top: 252px;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 125px;
     background-image: url(agua.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: repeat-x;
-    z-index: 0;
+    z-index: 9;
     animation: movimentoAgua 1s infinite linear;
 
 }
 
 #puente {
     position: absolute;
-    top: 42px;
+    top: 91px;
     left: 500px;
-    width: 200px;
-    height: 224px;
+    width: 367px;
+    height: 391px;
     background-image: url(puente.png);
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 9;
