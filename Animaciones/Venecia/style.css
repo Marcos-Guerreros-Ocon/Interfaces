@@ -8,7 +8,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 1;
+    z-index: 3;
 
 }
 
@@ -24,12 +24,17 @@
     background-repeat: no-repeat;
     z-index: 2;
     animation: movimientoRemo 1s infinite linear;
+
 }
 
 #conjunto {
     position: relative;
     animation: movimentoGondola 10s linear;
-    z-index: 3;
+    animation-fill-mode: forwards;
+    z-index: 4;
+
+    height: 200px;
+    width: 200px
 }
 
 #agua {
@@ -67,8 +72,13 @@
         transform: rotateZ(0deg);
     }
 
-    100% {
+    50% {
         transform: rotateZ(30deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
+
     }
 
 }

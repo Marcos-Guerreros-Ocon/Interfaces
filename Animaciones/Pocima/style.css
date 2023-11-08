@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+#pocion {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+    width: 200px;
+    height: 200px;
+    transform-origin: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(pocion.png);
+    z-index: 2;
+
+}
+
+
+#liquido {
+    background-color: rgb(255, 255, 255);
+    height: 140px;
+    width: 155px;
+    position: absolute;
+    top: 260px;
+    left: 250px;
+    z-index: 1;
+
+
+
+}
+
+body:hover #liquido {
+    animation: pocion 5s;
+    animation-delay: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+body:hover #jarra {
+    animation: jarra 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+#jarra {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    transform-origin: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(jarra.png);
+    z-index: 2;
+}
+
+#liquidoVertido {
+    background-color: blueviolet;
+    border-radius: 54%;
+    height: 16px;
+    width: 155px;
+    position: absolute;
+    z-index: 3;
+    left: 200px;
+    top: 157px;
+    transform: rotate(45deg);
+
+    opacity: 0;
+
+}
+
+@keyframes pocion {
+    0% {
+        height: 0px;
+        top: 397px;
+        background-color: blueviolet
+    }
+
+
+    100% {
+        height: 140px;
+        top: 260px;
+        background-color: blueviolet;
+    }
+}
+
+@keyframes jarra {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes liquidoCaer {}

@@ -1,0 +1,47 @@
+body {
+    background: url("res/water.jpg") no-repeat center center fixed;
+    height: 98vh;
+}
+
+.onda div {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgb(231, 229, 229);
+    border-radius: 100%;
+
+}
+
+.onda1 {
+    animation: goteo 4s infinite;
+}
+
+.onda2 {
+    animation: goteo 4s infinite;
+    animation-delay: 0.1s;
+}
+
+.onda3 {
+    animation: goteo 4s infinite;
+    animation-delay: 0.2s;
+}
+
+.onda4 {
+    animation: goteo 4s infinite;
+    animation-delay: 0.3s;
+}
+
+@keyframes goteo {
+    0% {
+        opacity: 0.1;
+        scale: 1;
+    }
+
+    100% {
+        scale: 6;
+        opacity: 0.6;
+    }
+
+}
