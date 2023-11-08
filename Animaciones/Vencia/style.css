@@ -1,0 +1,70 @@
+#gondola {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-image: url(gondola.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+
+}
+
+#remo {
+    position: absolute;
+    top: 61px;
+    left: 0;
+    width: 200px;
+    height: 100px;
+    background-image: url(remo.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    animation: movimientoRemo 1s infinite linear;
+}
+
+#conjunto {
+    position: relative;
+    animation: movimentoGondola 10s linear;
+    z-index: 3;
+}
+
+#agua {
+    position: absolute;
+    top: 125px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: url(agua.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-x;
+    z-index: 0;
+    animation: movimentoAgua 1s infinite linear;
+
+}
+
+@keyframes movimientoRemo {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(30deg);
+    }
+
+}
+
+@keyframes movimentoGondola {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(1000px);
+    }
+
+}

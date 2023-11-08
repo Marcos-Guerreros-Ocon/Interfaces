@@ -1,0 +1,62 @@
+#bomba {
+    height: 200px;
+    width: 93px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("bomba.jpg");
+    position: fixed;
+    top: 0;
+    left: 47vw;
+    animation: caidaBomba 5s;
+    opacity: 0;
+}
+
+#explosion {
+    height: 150px;
+    width: 150px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("explosion.jpg");
+    position: fixed;
+    bottom: 19vh;
+    left: 46vw;
+    opacity: 0;
+    animation: explosion 1s 4s;
+}
+
+#suelo {
+    height: 200px;
+    width: 400px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("suelo.png");
+    position: fixed;
+    bottom: 0;
+    left: 40vw;
+}
+
+@keyframes caidaBomba {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 65vh;
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes explosion {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        scale: 3;
+        opacity: 1;
+        bottom: 28vh;
+    }
+}
