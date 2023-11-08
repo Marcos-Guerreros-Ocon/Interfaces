@@ -47,6 +47,21 @@
 
 }
 
+#puente {
+    position: absolute;
+    top: 42px;
+    left: 500px;
+    width: 200px;
+    height: 224px;
+    background-image: url(puente.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9;
+
+
+}
+
 @keyframes movimientoRemo {
     0% {
         transform: rotateZ(0deg);
