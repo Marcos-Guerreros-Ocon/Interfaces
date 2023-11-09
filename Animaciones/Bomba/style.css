@@ -1,13 +1,23 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-image: url("cielo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
 #bomba {
     height: 200px;
     width: 93px;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url("bomba.jpg");
+    background-image: url("bomba.png");
     position: fixed;
     top: 0;
     left: 47vw;
-    animation: caidaBomba 5s;
+    animation: caidaBomba 2s;
     opacity: 0;
 }
 
@@ -18,21 +28,21 @@
     background-size: contain;
     background-image: url("explosion.png");
     position: fixed;
-    bottom: 19vh;
+    bottom: 30vh;
     left: 46vw;
     opacity: 0;
-    animation: explosion 1s 5s;
+    animation: explosion 3s;
+    z-index: 2;
 }
 
 #suelo {
     height: 200px;
-    width: 400px;
-    background-repeat: no-repeat;
+    width: 100vw;
+    background-repeat: revert;
     background-size: contain;
-    background-image: url("suelo.png");
+    background-image: url(sueloCorto.png);
     position: fixed;
     bottom: 0;
-    left: 40vw;
 }
 
 @keyframes caidaBomba {
@@ -42,7 +52,7 @@
     }
 
     100% {
-        top: 65vh;
+        top: 100vh;
         opacity: 1;
 
     }
@@ -52,11 +62,24 @@
 @keyframes explosion {
     0% {
         opacity: 0;
+        transform: scaleY(0) scaleX(0);
+    }
+
+    50% {
+        transform: scaleY(2) scaleX(0) scale(2);
+        opacity: 1;
+
+
     }
 
     100% {
-        scale: 3;
+        transform: scaleX(2) scale(5);
         opacity: 1;
-        bottom: 28vh;
+        bottom: 50vh;
+
+        z-index: 0;
+        opacity: 1;
+        bottom: 40vh;
+
     }
 }

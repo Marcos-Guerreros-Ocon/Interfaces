@@ -1,0 +1,135 @@
+body {
+    background: url(carretera.jpeg);
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    background-position: center;
+
+}
+
+#coche {
+    position: absolute;
+    top: 75vh;
+    left: 0;
+    background-image: url(El-Súper-Ferrari.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 400px;
+    animation: movimientoCoche 5s, cambioCoche 5s, volarCoche 5s;
+    animation-delay: 0s, 1s, 4s;
+    animation-fill-mode: forwards;
+
+}
+
+#persona {
+    position: fixed;
+    top: 75vh;
+    left: 50vw;
+    background-image: url(steve.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 400px;
+    animation: movi 5s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+
+}
+
+#pata {
+    position: absolute;
+    top: 76.7vh;
+    left: 50vw;
+    background-image: url(pataChukNorries.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 75px;
+    width: 400px;
+    animation: patada 1s;
+    animation-delay: 3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes patada {
+    0% {
+        left: 45vw;
+        ROTATE: z 288deg;
+        top: 70vh;
+        opacity: 1;
+        rotate: z 260deg;
+    }
+
+    100% {
+        opacity: 1;
+        rotate: z 360deg;
+    }
+
+}
+
+@keyframes movimientoCoche {
+    0% {
+        translate: 0vw;
+    }
+
+    100% {
+        translate: 40vw;
+    }
+
+}
+
+@keyframes cambioCoche {
+
+    100% {
+        rotate: y 80deg;
+
+    }
+}
+
+@keyframes movi {
+    0% {
+
+
+        background-image: url('sinChukNorries.png');
+    }
+
+    100% {
+
+        background-image: url('sinChukNorries.png');
+    }
+
+}
+
+@keyframes movimientoPersona {
+    0% {
+        rotate: z 332deg;
+        background-image: url('chuckNorries.png');
+    }
+
+    100% {
+        rotate: z 360deg;
+        background-image: url('chuckNorries.png');
+    }
+}
+
+@keyframes volarCoche {
+    0% {
+        top: 50vh;
+        left: -1vw;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        top: 48vh;
+        left: -3vw;
+
+    }
+
+
+    100% {
+        top: 30vh;
+        left: -86vw;
+        transform: rotate(3600deg);
+    }
+}
