@@ -6,6 +6,7 @@ body {
     background-repeat: no-repeat;
     font-family: 'Minecraft', sans-serif;
 
+
 }
 
 h1 {
@@ -77,43 +78,40 @@ label {
     left: 50%;
 }
 
+#planetas {
+    position: initial;
+    width: 100%;
+    height: 66%;
+}
+
+.planeta {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+}
+
 #planeta0 {
     top: 31%;
     left: 16%;
-    position: absolute;
-    width: 120px;
-    background-repeat: no-repeat;
-    height: 120px;
     background-image: url(res/planeta1.png);
 }
 
 #planeta1 {
     top: 47%;
     left: 40%;
-    position: absolute;
-    width: 120px;
-    background-repeat: no-repeat;
-    height: 120px;
     background-image: url(res/planeta2.png);
 }
 
 #planeta2 {
     top: 36%;
     left: 63%;
-    position: absolute;
-    width: 120px;
-    background-repeat: no-repeat;
-    height: 120px;
     background-image: url(res/planeta3.png);
 }
 
 #planeta3 {
     top: 49%;
     left: 84%;
-    position: absolute;
-    width: 120px;
-    background-repeat: no-repeat;
-    height: 120px;
     background-image: url(res/planeta4.png);
 }
 
@@ -161,10 +159,6 @@ label {
 }
 
 
-/**/
-
-
-/* CSS */
 .dialogo {
     display: none;
     position: absolute;
@@ -281,4 +275,86 @@ progress.amarillo::-webkit-progress-value {
 
 .amarillo {
     background: #FF0;
+}
+
+
+#damage:hover #damage-meter-value {
+    display: block;
+}
+
+#damage-meter-value {
+    display: none;
+}
+
+#energy:hover #energy-meter-value {
+    display: block;
+}
+
+#energy-meter-value {
+    display: none;
+}
+
+#survivor:hover #survivor-meter-value {
+    display: block;
+}
+
+#survivor-meter-value {
+    display: none;
+}
+
+#ammunition:hover #ammunition-meter-value {
+    display: block;
+}
+
+#ammunition-meter-value {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        height: 150vh;
+    }
+
+    #bottom {
+        display: flex;
+        flex-direction: column;
+        bottom: -50vh;
+    }
+
+    #formulariosControles {
+        z-index: 2;
+        position: absolute;
+        right: 0;
+    }
+
+    #modalBatalla {
+        width: 75%;
+    }
+
+    #planetas .planeta {
+        position: initial;
+    }
+
+    #planetas {
+        position: initial;
+        height: 62%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    #modalBatalla {
+        top: 44%;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    #formulariosControles {
+        z-index: 2;
+        position: absolute;
+        right: 0;
+    }
+
+
 }

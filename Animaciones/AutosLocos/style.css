@@ -17,7 +17,7 @@ body {
     height: 200px;
     width: 400px;
     animation: movimientoCoche 5s, cambioCoche 5s, volarCoche 5s;
-    animation-delay: 0s, 1s, 4s;
+    animation-delay: 0s, 1s, 6s;
     animation-fill-mode: forwards;
 
 }
@@ -38,25 +38,24 @@ body {
 }
 
 #pata {
-    position: absolute;
-    top: 76.7vh;
-    left: 50vw;
+    position: relative;
+
+    top: 20px;
+
     background-image: url(pataChukNorries.png);
     background-size: contain;
     background-repeat: no-repeat;
     height: 75px;
-    width: 400px;
+    width: 130px;
     animation: patada 1s;
-    animation-delay: 3s;
+    animation-delay: 5s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
 
 @keyframes patada {
     0% {
-        left: 45vw;
-        ROTATE: z 288deg;
-        top: 70vh;
+        top: 50px;
         opacity: 1;
         rotate: z 260deg;
     }
@@ -91,7 +90,12 @@ body {
     0% {
 
 
-        background-image: url('sinChukNorries.png');
+        background-image: url('chuckNorries.png');
+    }
+
+    50% {
+
+        background-image: url('chuckNorries.png');
     }
 
     100% {

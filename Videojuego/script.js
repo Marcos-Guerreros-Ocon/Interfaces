@@ -149,6 +149,7 @@ const cargarDatos = () => {
         campo.value = sessionStorage.getItem("energia");
     });
 
+    document.getElementById("ammunition-meter-value").innerHTML = sessionStorage.getItem("misiles");
     integridad.value = sessionStorage.getItem("integridad");
     misiles.value = sessionStorage.getItem("misiles");
     tripulacion = sessionStorage.getItem("tripulacion");
@@ -311,6 +312,9 @@ const prepararPelea = (tablaLista) => {
 
 
     const tabla = document.createElement("table");
+    tabla.setAttribute("cellpadding", "0");
+    tabla.setAttribute("cellspacing", "0");
+
     tabla.id = "tablaBatalla";
 
     for (let i = 0; i < 9; i++) {
@@ -478,6 +482,7 @@ const cambiarArma = () => {
 };
 
 const dispararMisil = () => {
+    document.getElementById("ammunition-meter-value").innerHTML = misiles.value;
     if (misiles.value == 0) {
         return;
     }

@@ -161,12 +161,6 @@
 
         </div>
     </div>
-
-    <div class="planeta" id="planeta0"></div>
-    <div class="planeta" id="planeta1"></div>
-    <div class="planeta" id="planeta2"></div>
-    <div class="planeta" id="planeta3"></div>
-
     <div id="formulariosControles">
         <!-- Interfaz del Escudo -->
         <form id="shield-interface" style="display: none;" class="formularioControl">
@@ -180,9 +174,9 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía: <span id="energy-meter-value"></span></label>
-            <div>
 
+            <div id="energy">
+                <label>Energía: <span id="energy-meter-value"></span></label>
                 <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
 
@@ -210,8 +204,9 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía: <label>Energía: <span id="energy-meter-value"></span></label></label>
-            <div>
+
+            <div id="energy">
+                <label>Energía: <span id="energy-meter-value"></span></label>
                 <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
 
@@ -237,16 +232,20 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía: <label>Energía: <span id="energy-meter-value"></span></label></label>
-            <div>
-                <p id="energy-meter-value"></p>
+
+            <div id="energy">
+                <label>Energía: <span id="energy-meter-value"></span></label>
                 <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
             <input type="radio" id="weapon1" name="weapon">
             <label for="weapon1">Láseres</label><br>
             <input type="radio" id="weapon2" name="weapon">
-            <label for="weapon2">Misiles Nucleares</label><br>
-            <meter id="ammunition-meter" min="0" max="100"></meter><br>
+            <label>Misiles Nucleares: </label><br>
+            <div id="ammunition">
+                <label>Misiles Nucleares: <span id="ammunition-meter-value"></span></label>
+                <meter id="ammunition-meter" min="0" max="100"></meter><br>
+            </div>
+
             <button type="button" id="btnDisparar">Disparar</button>
             <button type="button" id="btnRecargar">Recargar</button><br>
             <button type="button" id="btnCambiarArma">Cambiar Arma</button>
@@ -289,8 +288,8 @@
                 <option value="herido">Juan Salomón</option>
             </select><br>
 
-            <label>Energía: <label>Energía: <span id="energy-meter-value"></span></label></label>
-            <div>
+            <div id="energy">
+                <label>Energía: <span id="energy-meter-value"></span></label>
                 <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
             <label for="proa-shield">Refrigerar motor:</label>
@@ -298,6 +297,12 @@
 
             <button type="button" id="btnSaltar">Saltar</button>
         </form>
+    </div>
+    <div id="planetas">
+        <div class="planeta" id="planeta0"></div>
+        <div class="planeta" id="planeta1"></div>
+        <div class="planeta" id="planeta2"></div>
+        <div class="planeta" id="planeta3"></div>
     </div>
 
     <!-- MODAL RECOMPENSA -->
@@ -320,21 +325,21 @@
         <div id="datos">
             <div>
                 <label>Supervivientes:</label>
-                <div>
+                <div id="survivor">
                     <p id="survivor-meter-value">0</p>
                     <meter id="survivor-meter" min="0" max="100" low="25" optimum="75" high="50"> </meter>
                 </div>
             </div>
             <div>
                 <label>Energía:</label>
-                <div>
+                <div id="energy">
                     <p id="energy-meter-value"></p>
                     <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
                 </div>
             </div>
             <div>
                 <label>Integridad del casco:</label>
-                <div>
+                <div id="damage">
                     <p id="damage-meter-value"></p>
                     <meter id="damage-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
                 </div>
