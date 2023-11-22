@@ -1,37 +1,97 @@
+@font-face {
+    font-family: 'dotFont';
+    src: url('font/MonaspaceKryptonVarVF[wght,wdth,slnt].ttf') format('truetype');
+
+}
+
 body {
     background: url("https://images6.alphacoders.com/124/1243346.png");
     background-position: center center;
     height: 99vh;
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: 'Minecraft', sans-serif;
+    font-family: 'dotFont', sans-serif;
+    overflow: hidden;
+    cursor: url("res/cursor2.png"), auto;
+}
 
-
+button,
+.planeta {
+    cursor: url("res/cursor.png"), auto;
 }
 
 h1 {
     font-size: large;
+    font-weight: bold;
 }
 
 p,
 label {
     font-size: small;
+    font-weight: 800;
+}
+
+button p {
+    margin: 0;
+    padding: 0;
 }
 
 .panelControles {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 #formulariosControles {
     display: flex;
     flex-flow: row wrap;
     flex-direction: row-reverse;
+    position: fixed;
+    right: 20px;
+    z-index: 4;
+}
+
+#formulariosControles form {
+    transform: translateX(500px);
+}
+
+#formulariosControles form {
+    animation: aparecer 0.25s linear forwards;
+}
+
+@keyframes aparecer {
+
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+
+meter::-webkit-meter-bar {
+    border-radius: 0;
+    height: 15px;
+    border: none;
+    background: #ffffff9c;
+}
+
+
+
+button {
+    font-weight: 800;
+    line-height: 25px;
+    font-size: 15px;
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    margin: 10px;
 }
 
 .panelControles button {
-    font-family: 'Minecraft', sans-serif;
+    font-weight: 800;
     line-height: 45px;
     font-size: 15px;
     background: linear-gradient(45deg, transparent 5%, #01afff 5%);
@@ -46,9 +106,27 @@ label {
     margin: 10px;
 }
 
+button:disabled {
+    background: linear-gradient(45deg, transparent 5%, #f6aa1c6e 5%);
+}
+
+.listaBotones {
+
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+
+}
+
 .panelControles button div {
     display: flex;
     align-items: center;
+}
+
+.panelControles button div svg {
+    margin: 0 10px;
+
+
 }
 
 #datos,
@@ -59,10 +137,22 @@ label {
 
 }
 
+#modalResumen {
+    padding: 25px;
+    margin: 25px;
+    background: linear-gradient(45deg, rgb(34, 137, 233) 95%, transparent 5%);
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    display: none;
+    z-index: 20;
+}
+
 #datos div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 5px 0px;
 }
 
 #datos div meter {
@@ -78,46 +168,56 @@ label {
     left: 50%;
 }
 
-#planetas {
-    position: initial;
-    width: 100%;
-    height: 66%;
-}
-
-.planeta {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background-repeat: no-repeat;
-}
-
 #planeta0 {
     top: 31%;
     left: 16%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
     background-image: url(res/planeta1.png);
 }
 
 #planeta1 {
     top: 47%;
     left: 40%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
     background-image: url(res/planeta2.png);
 }
 
 #planeta2 {
     top: 36%;
     left: 63%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
     background-image: url(res/planeta3.png);
 }
 
 #planeta3 {
     top: 49%;
     left: 84%;
+    position: absolute;
+    width: 120px;
+    background-repeat: no-repeat;
+    height: 120px;
     background-image: url(res/planeta4.png);
+}
+
+.planeta {
+    z-index: 2;
 }
 
 .planeta:hover {
     transform: scale(1.2);
-    cursor: pointer;
+}
+
+.infoVisible {
+    transform: scale(1.2);
 }
 
 #bottom {
@@ -136,8 +236,8 @@ label {
     display: flex;
     flex-direction: column;
     height: 150px;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-around;
 }
 
 #saltoEmergencia button {
@@ -155,10 +255,14 @@ label {
 
 .formularioControl {
     padding: 45px;
-    background: linear-gradient(45deg, transparent 5%, #01afffb8 5%);
+    background: linear-gradient(45deg, transparent 5%, #01afff 5%);
 }
 
 
+/**/
+
+
+/* CSS */
 .dialogo {
     display: none;
     position: absolute;
@@ -198,6 +302,9 @@ label {
 #tablaBatalla td {
     width: 35px;
     height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #tablaBatalla td img {
@@ -209,19 +316,21 @@ label {
     display: none;
     padding: 45px;
     z-index: 20;
-    background: linear-gradient(45deg, transparent 5%, #01afffb8 5%);
+    background: linear-gradient(45deg, transparent 5%, #01afff 5%);
     position: absolute;
     width: 25%;
     height: 25%;
     top: 25%;
     left: 25%;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #modalBatalla {
     display: none;
     padding: 23px;
     z-index: 20;
-    background: linear-gradient(45deg, transparent 5%, #01afffb8 5%);
+    background: linear-gradient(45deg, transparent 5%, #01afff 5%);
     position: absolute;
     width: 19%;
     height: 42%;
@@ -234,7 +343,7 @@ label {
     top: 0px;
     left: 0px;
     z-index: 10;
-    width: 99vw;
+    width: 100vw;
     height: 100vh;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.8);
@@ -277,84 +386,316 @@ progress.amarillo::-webkit-progress-value {
     background: #FF0;
 }
 
+tr {
+    display: flex;
 
-#damage:hover #damage-meter-value {
-    display: block;
 }
 
-#damage-meter-value {
+@keyframes avisoPocoTiempo {
+    0% {
+        scale: 1;
+    }
+
+    25% {
+        scale: 1.5;
+    }
+
+    50% {
+        scale: 1;
+    }
+
+    75% {
+        scale: 1.5;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes action30S {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(40deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
+#datos div div {
+    position: relative;
+}
+
+#datos div div p {
+    position: absolute;
+    left: -20px;
     display: none;
 }
 
-#energy:hover #energy-meter-value {
+#datos div div:hover p {
     display: block;
 }
 
-#energy-meter-value {
+.visited {
+    filter: grayscale(1);
+}
+
+.info {
     display: none;
+    height: 250px;
+    width: 250px;
+    z-index: 4;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, rgb(34, 137, 233) 95%, transparent 5%);
+    transform: translateX(0);
+    transition: 0.5s;
 }
 
-#survivor:hover #survivor-meter-value {
-    display: block;
+
+/********** Range Input Styles **********/
+/*Range Reset*/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+    margin: 20px;
 }
 
-#survivor-meter-value {
+/* Removes default focus */
+input[type="range"]:focus {
+    outline: none;
+}
+
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #053a5f;
+    border-radius: 0;
+    height: 5px;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    margin-top: -12px;
+    /* Centers thumb on the track */
+
+    /*custom styles*/
+    background-color: #5cd5eb;
+    height: 2rem;
+    width: 1rem;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    border: 1px solid #053a5f;
+    outline: 3px solid #053a5f;
+    outline-offset: 0.125rem;
+}
+
+#cinematica {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-image: url(https://i.pinimg.com/originals/01/78/6e/01786ed7b3c75565e3c87fffd4e30374.gif);
+    background-size: cover;
+    background-position: bottom;
     display: none;
+
 }
 
-#ammunition:hover #ammunition-meter-value {
-    display: block;
+
+
+input[type=text] {
+    appearance: none;
+    border: none;
+    outline: none;
+    border-bottom: .2em solid #E91E63;
+    background: #e91e6273;
+    border-radius: .2em .2em 0 0;
+    padding: .4em;
+    color: #fafafa;
+    width: 7em;
 }
 
-#ammunition-meter-value {
-    display: none;
+input[type=number] {
+    width: 7em;
+    padding: 0.5em;
+    border: .2em solid #E91E63;
+    appearance: none;
+    border: none;
+    outline: none;
+    border-bottom: .2em solid #E91E63;
+    text-align: center;
+    color: #E91E63;
+    appearance: textfield;
+    margin: 0;
+
 }
 
-@media screen and (max-width: 600px) {
-    body {
-        height: 150vh;
+#tripulacion-interface .campo {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+#disparo {
+
+    height: 2px;
+    width: 5px;
+    background-color: red;
+    opacity: 0;
+}
+
+@keyframes disparo {
+    0% {
+        opacity: 1;
+        transform: translateX(0px);
     }
 
-    #bottom {
-        display: flex;
-        flex-direction: column;
-        bottom: -50vh;
+    99% {
+        opacity: 1;
+        transform: translateX(40px);
     }
 
-    #formulariosControles {
-        z-index: 2;
-        position: absolute;
-        right: 0;
-    }
+    100% {
+        opacity: 0;
 
-    #modalBatalla {
-        width: 75%;
-    }
-
-    #planetas .planeta {
-        position: initial;
-    }
-
-    #planetas {
-        position: initial;
-        height: 62%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    #modalBatalla {
-        top: 44%;
     }
 }
 
-@media screen and (max-width:1000px) {
-    #formulariosControles {
-        z-index: 2;
-        position: absolute;
-        right: 0;
+@keyframes disparoY {
+    0% {
+
+        opacity: 1;
+        transform: translateY(0px) rotate(270deg);
     }
 
+    99% {
+        opacity: 1;
+        transform: translateY(40px) rotate(270deg);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.center {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.end {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+.btn {
+    background: linear-gradient(45deg, transparent 5%, #F6AA1C 5%);
+    padding: 5px 10px;
+}
+
+.btnVolver {
+    background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+    padding: 5px;
+}
+
+.campo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.combo {
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.combo button {
+    width: 50%;
+    margin: 0;
+}
+
+.combo select {
+    border: none;
+    width: 50%;
+    padding: 15px
+}
+
+.flexColCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select {
+    border: none;
+    padding: 5px;
+    width: 8em;
+
+}
+
+.flexRowSpaceAround {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+
+
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+
+    height: 15px;
+    width: 15px;
+
+    background: #cbd1d8;
+
+}
+
+.option-input:checked {
+    background: #e04040;
+}
+
+.option-input.radio {
+    border-radius: 50%;
+}
+
+.btnFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }

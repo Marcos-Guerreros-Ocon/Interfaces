@@ -17,12 +17,6 @@
 <body>
 
     <div class="panelControles">
-
-
-        <div id="pantallaPrincipal">
-            <h2>Pantalla Principal</h2>
-        </div>
-
         <div id="controles">
             <button type="button" onclick="mostrarEscudoInterface()">
                 <div>
@@ -30,7 +24,8 @@
                         <path
                             d="M20 6C20 6 19.1843 6 19.0001 6C16.2681 6 13.8871 4.93485 11.9999 3C10.1128 4.93478 7.73199 6 5.00009 6C4.81589 6 4.00009 6 4.00009 6C4.00009 6 4 8 4 9.16611C4 14.8596 7.3994 19.6436 12 21C16.6006 19.6436 20 14.8596 20 9.16611C20 8 20 6 20 6Z"
                             stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg> Escudo
+                    </svg>
+                    <p>Escudo</p>
                 </div>
             </button>
             <button type="button" onclick="mostrarPropulsorInterface()">
@@ -50,7 +45,7 @@
                         <path
                             d="M362.52,120.78a26.28,26.28,0,0,0-16.32,12.43,5.58,5.58,0,1,0,9.71,5.52,15,15,0,0,1,9.35-7.11,5.59,5.59,0,1,0-2.74-10.84Z" />
                     </svg>
-                    Propulsor
+                    <p> Propulsor</p>
                 </div>
             </button>
             <button type="button" onclick="mostrarArmaInterface()">
@@ -109,7 +104,7 @@
 		c2.033-2.088,4.287-2.526,5.82-2.526c2.303,0,4.539,0.952,6.138,2.611c1.072,1.113,2.327,3.056,2.217,5.988L70.158,245.362z" />
                         </g>
                     </svg>
-                    Arma
+                    <p>Arma</p>
                 </div>
             </button>
             <button type="button" onclick="mostrarTripulacionInterface()">
@@ -134,7 +129,7 @@
                         <line class="cls-1" x1="4.7" y1="6.98" x2="6.52" y2="6.98" />
                         <line class="cls-1" x1="17.48" y1="6.98" x2="19.3" y2="6.98" />
                     </svg>
-                    Tripulación
+                    <p>Tripulación</p>
                 </div>
             </button>
             <button type="button" onclick="mostrarMotorSaltoInterface()">
@@ -154,161 +149,244 @@
 	H167.948L133.688,323.391z M359.722,367.597h-5.302V187.826h5.302V367.597z M377.722,263.264V241.94h18.298v21.324H377.722z
 	 M434.263,296.428c0,12.986-8.508,24.022-20.243,27.827V180.95c11.735,3.804,20.243,14.84,20.243,27.827V296.428z" />
                     </svg>
-                    Motor de Salto
+                    <p> Motor de Salto</p>
                 </div>
 
             </button>
 
         </div>
     </div>
+
+    <div class="planeta" id="planeta0">
+        <div class="info"></div>
+    </div>
+    <div class="planeta" id="planeta1">
+        <div class="info"></div>
+    </div>
+    <div class="planeta" id="planeta2">
+        <div class="info"></div>
+    </div>
+    <div class="planeta" id="planeta3">
+        <div class="info"></div>
+    </div>
+
     <div id="formulariosControles">
         <!-- Interfaz del Escudo -->
         <form id="shield-interface" style="display: none;" class="formularioControl">
             <h2>Interfaz del Escudo</h2>
 
-            <label for="crew-member-function">Tripulantes:</label>
-            <button type="button">Añadir tripulante</button>
-            <select id="crew-member-function">
-                <option value="disponible">Nuc Shazam</option>
-                <option value="ocupado">Salt Peper</option>
-                <option value="herido">Juan Salomón</option>
-            </select><br>
 
+            <div class="flexColCenter combo">
+                <label for="crew-member-function">Tripulantes:</label>
+                <select id="crew-member-function">
+                    <option value="disponible">Nuc Shazam</option>
+                    <option value="ocupado">Salt Peper</option>
+                    <option value="herido">Juan Salomón</option>
+                </select>
+                <button class="btn" type="button">Añadir tripulante</button>
+            </div>
 
-            <div id="energy">
+            <div class="flexColCenter">
                 <label>Energía: <span id="energy-meter-value"></span></label>
                 <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
-
-            <label for="proa-shield">Proa:</label>
-            <input type="range" id="proa-shield" min="0" max="100"><br>
-            <label for="popa-shield">Popa:</label>
-            <input type="range" id="popa-shield" min="0" max="100"><br>
-            <label for="babor-shield">Babor:</label>
-            <input type="range" id="babor-shield" min="0" max="100"><br>
-            <label for="estribor-shield">Estribor:</label>
-            <input type="range" id="estribor-shield" min="0" max="100"><br>
-            <button type="button" id="btnIgualarEscudos">Igualar Todos</button>
-            <button type="button" onclick="ocultarTodasLasInterfaces()">Volver</button>
+            <div>
+                <div class="campo">
+                    <label for="proa-shield">Proa:</label>
+                    <input type="range" id="proa-shield" min="0" max="100" value="25"><br>
+                </div>
+                <div class="campo">
+                    <label for="popa-shield">Popa:</label>
+                    <input type="range" id="popa-shield" min="0" max="100" value="25"><br>
+                </div>
+                <div class="campo">
+                    <label for="babor-shield">Babor:</label>
+                    <input type="range" id="babor-shield" min="0" max="100" value="25"><br>
+                </div>
+                <div class="campo">
+                    <label for="estribor-shield">Estribor:</label>
+                    <input type="range" id="estribor-shield" min="0" max="100" value="25"><br>
+                </div>
+            </div>
+            <div class="listaBotones">
+                <div class="center">
+                    <button type="button" class="btn" id="btnIgualarEscudos">Igualar Todos</button>
+                </div>
+                <div class="end">
+                    <button type="button" class="btnVolver" onclick="ocultarTodasLasInterfaces()">Volver</button>
+                </div>
+            </div>
         </form>
 
         <!-- Interfaz del Propulsor -->
         <form id="propulsor-interface" style="display: none;" class="formularioControl">
             <h2>Interfaz del Propulsor</h2>
 
-            <label for="crew-member-function">Tripulantes:</label>
-            <button type="button">Añadir tripulante</button>
-            <select id="crew-member-function">
-                <option value="disponible">Nuc Shazam</option>
-                <option value="ocupado">Salt Peper</option>
-                <option value="herido">Juan Salomón</option>
-            </select><br>
-
-
-            <div id="energy">
+            <div class="flexColCenter combo">
+                <label for="crew-member-function">Tripulantes:</label>
+                <select id="crew-member-function">
+                    <option value="disponible">Nuc Shazam</option>
+                    <option value="ocupado">Salt Peper</option>
+                    <option value="herido">Juan Salomón</option>
+                </select>
+                <button class="btn" type="button">Añadir tripulante</button>
+            </div>
+            <div class="flexColCenter">
                 <label>Energía: <span id="energy-meter-value"></span></label>
                 <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
 
             <label for="speed-slider">Velocidad:</label>
             <input type="range" id="speed-slider" min="0" max="1000" disabled><br>
-            <button type="button" id="bajarVelocidad">-100 km/h</button>
-            <button type="button" id="subirVelocidad">+100 km/h</button><br>
+            <div class="center">
+                <button type="button" class="btn" id="bajarVelocidad">-100 km/h</button>
+                <button type="button" class="btn" id="subirVelocidad">+100 km/h</button>
+            </div>
             <label for="direction-slider">Dirección:</label>
             <input type="range" id="direction-slider" min="-180" max="180"><br>
-            <button type="button" id="girarIzquierda">Girar Izquierda</button>
-            <button type="button" id="girarDerecha">Girar Derecha</button><br>
-            <button type="button" onclick="ocultarTodasLasInterfaces()">Volver</button>
+            <div class="listaBotones">
+                <div class="center">
+                    <button type="button" class="btn btnFlex" id="girarIzquierda">
+                        <svg fill="#000000" width="25px" height="25px" viewBox="0 0 24 24"
+                            id="turn-left-direction-round-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
+                            class="icon flat-color">
+                            <path id="primary"
+                                d="M4.38,4.31,7.5,2.17A1,1,0,0,1,9,2.86V4h6a5,5,0,0,1,5,5V21a1,1,0,0,1-2,0V9a3,3,0,0,0-3-3H9V7.14a1,1,0,0,1-1.5.69L4.38,5.69A.82.82,0,0,1,4.38,4.31Z"
+                                style="fill: rgb(255, 255, 255);">
+                            </path>
+                        </svg>
+                        Girar Izquierda</button>
+                    <button type="button" class="btn btnFlex" id="girarDerecha">
+                        <svg fill="#000000" width="25px" height="25px" viewBox="0 0 24 24"
+                            id="turn-right-direction-round-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
+                            class="icon flat-color">
+                            <path id="primary"
+                                d="M19.62,4.31,16.5,2.17a1,1,0,0,0-1.5.69V4H9A5,5,0,0,0,4,9V21a1,1,0,0,0,2,0V9A3,3,0,0,1,9,6h6V7.14a1,1,0,0,0,1.5.69l3.12-2.14A.82.82,0,0,0,19.62,4.31Z"
+                                style="fill: rgb(255, 255, 255);">
+                            </path>
+                        </svg>
+                        Girar Derecha</button><br>
+                </div>
+                <div class="end">
+                    <button type="button" class="btnVolver" onclick="ocultarTodasLasInterfaces()">Volver</button>
+                </div>
+            </div>
         </form>
         <!-- Interfaz del Arma -->
         <form id="arma-interface" style="display: none;" class="formularioControl">
             <h2>Interfaz del Arma</h2>
 
-            <label for="crew-member-function">Tripulantes:</label>
-            <button type="button">Añadir tripulante</button>
-            <select id="crew-member-function">
-                <option value="disponible">Nuc Shazam</option>
-                <option value="ocupado">Salt Peper</option>
-                <option value="herido">Juan Salomón</option>
-            </select><br>
-
-
-            <div id="energy">
-                <label>Energía: <span id="energy-meter-value"></span></label>
-                <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
+            <div class="flexColCenter combo">
+                <label for="crew-member-function">Tripulantes:</label>
+                <select id="crew-member-function">
+                    <option value="disponible">Nuc Shazam</option>
+                    <option value="ocupado">Salt Peper</option>
+                    <option value="herido">Juan Salomón</option>
+                </select>
+                <button class="btn" type="button">Añadir tripulante</button>
             </div>
-            <input type="radio" id="weapon1" name="weapon">
-            <label for="weapon1">Láseres</label><br>
-            <input type="radio" id="weapon2" name="weapon">
-            <label>Misiles Nucleares: </label><br>
-            <div id="ammunition">
-                <label>Misiles Nucleares: <span id="ammunition-meter-value"></span></label>
-                <meter id="ammunition-meter" min="0" max="100"></meter><br>
+            <div class="flexRowSpaceAround">
+                <div class="flexColCenter">
+                    <label>Energía: <span id="energy-meter-value"></span></label>
+                    <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
+                </div>
+                <div class="flexColCenter">
+                    <label>Misiles: <span id="ammunition-meter-value"></span></label>
+                    <meter id="ammunition-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
+                </div>
             </div>
-
-            <button type="button" id="btnDisparar">Disparar</button>
-            <button type="button" id="btnRecargar">Recargar</button><br>
-            <button type="button" id="btnCambiarArma">Cambiar Arma</button>
-            <button type="button" onclick="ocultarTodasLasInterfaces()">Volver</button>
+            <div style="margin: 10px 0px;">
+                <div class="flexRow">
+                    <input type="radio" id="weapon1" name="weapon" disabled class="option-input radio">
+                    <label for="weapon1" style="width: 150px;">Láseres</label>
+                </div>
+                <div class="flexRow">
+                    <input type="radio" id="weapon2" name="weapon" disabled class="option-input radio">
+                    <label for="weapon2" style="width: 150px;">Misiles Nucleares</label><br>
+                </div>
+            </div>
+            <div class="flexColCenter">
+                <button class="btn" type="button" id="btnCambiarArma">Cambiar Arma</button>
+            </div>
+            <div class="listaBotones">
+                <div>
+                    <button class="btn" type="button" id="btnDisparar">Disparar</button>
+                    <button class="btn" type="button" id="btnRecargar">Recargar</button>
+                </div>
+                <div class="end">
+                    <button type="button" class="btnVolver" onclick="ocultarTodasLasInterfaces()">Volver</button>
+                </div>
+            </div>
         </form>
 
         <!-- Interfaz de la Tripulación -->
         <form id="tripulacion-interface" style="display: none;" class="formularioControl">
             <h2>Interfaz de la Tripulación</h2>
-            <label for="crew-member-name">Nombre:</label>
-            <input type="text" id="crew-member-name"><br>
-            <label for="crew-member-function">Función:</label>
-            <select id="crew-member-function">
-                <option value="disponible">Ingeniero</option>
-                <option value="ocupado">Médico</option>
-                <option value="herido">Militar</option>
-            </select><br>
-            <label for="crew-member-skill">Nivel de Habilidad:</label>
-            <input type="number" id="crew-member-skill" min="0" max="100"><br>
-            <label for="crew-member-status">Estado:</label>
-            <select id="crew-member-status">
-                <option value="disponible">Disponible</option>
-                <option value="ocupado">Ocupado</option>
-                <option value="herido">Herido</option>
-            </select><br>
-            <label for="crew-member-birthdate">Fecha de Nacimiento:</label>
-            <input type="date" id="crew-member-birthdate"><br>
-            <button type="button" onclick="ocultarTodasLasInterfaces()">Volver</button>
+            <div class="campo">
+                <label for="crew-member-name">Nombre:</label>
+                <input type="text" id="crew-member-name">
+            </div>
+            <div class="campo">
+                <label for="crew-member-function">Función:</label>
+                <select id="crew-member-function">
+                    <option value="disponible">Ingeniero</option>
+                    <option value="ocupado">Médico</option>
+                    <option value="herido">Militar</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="crew-member-skill">Nivel de Habilidad:</label>
+                <input type="number" id="crew-member-skill" min="0" max="100">
+            </div>
+            <div class="campo">
+                <label for="crew-member-status">Estado:</label>
+                <select id="crew-member-status">
+                    <option value="disponible">Disponible</option>
+                    <option value="ocupado">Ocupado</option>
+                    <option value="herido">Herido</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="crew-member-birthdate">Fecha de Nacimiento:</label>
+                <input type="date" id="crew-member-birthdate">
+            </div>
+            <div class="listaBotones">
+                <div class="end">
+                    <button type="button" class="btnVolver" onclick="ocultarTodasLasInterfaces()">Volver</button>
+                </div>
+            </div>
         </form>
 
         <!-- Interfaz del Motor de Salto -->
         <form id="motor-salto-interface" style="display: none;" class="formularioControl">
             <h2>Interfaz del Motor de Salto</h2>
-
-            <label for="crew-member-function">Tripulantes:</label>
-            <button type="button">Añadir tripulante</button>
-            <select id="crew-member-function">
-                <option value="disponible">Nuc Shazam</option>
-                <option value="ocupado">Salt Peper</option>
-                <option value="herido">Juan Salomón</option>
-            </select><br>
-
-            <div id="energy">
+            <div class="flexColCenter combo">
+                <label for="crew-member-function">Tripulantes:</label>
+                <select id="crew-member-function">
+                    <option value="disponible">Nuc Shazam</option>
+                    <option value="ocupado">Salt Peper</option>
+                    <option value="herido">Juan Salomón</option>
+                </select>
+                <button class="btn" type="button">Añadir tripulante</button>
+            </div>
+            <div class="flexColCenter">
                 <label>Energía: <span id="energy-meter-value"></span></label>
                 <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter><br>
             </div>
             <label for="proa-shield">Refrigerar motor:</label>
             <input type="range" id="refrigerarMotor" min="0" max="10"><br>
-
-            <button type="button" id="btnSaltar">Saltar</button>
+            <div class="listaBotones">
+                <button class="btn" type="button" id="btnSaltar">Saltar</button>
+            </div>
         </form>
     </div>
-    <div id="planetas">
-        <div class="planeta" id="planeta0"></div>
-        <div class="planeta" id="planeta1"></div>
-        <div class="planeta" id="planeta2"></div>
-        <div class="planeta" id="planeta3"></div>
-    </div>
+
+    <!-- MODAL RESUMEN -->
+    <div id="modalResumen"></div>
 
     <!-- MODAL RECOMPENSA -->
     <div id="modalRecompensa"></div>
     <div id="modalBackDrop"></div>
-
 
     <!-- HTML -->
     <div id="modalBatalla"></div>
@@ -325,41 +403,57 @@
         <div id="datos">
             <div>
                 <label>Supervivientes:</label>
-                <div id="survivor">
+                <div>
                     <p id="survivor-meter-value">0</p>
                     <meter id="survivor-meter" min="0" max="100" low="25" optimum="75" high="50"> </meter>
                 </div>
             </div>
             <div>
                 <label>Energía:</label>
-                <div id="energy">
+                <div>
                     <p id="energy-meter-value"></p>
                     <meter id="energy-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
                 </div>
             </div>
             <div>
                 <label>Integridad del casco:</label>
-                <div id="damage">
+                <div>
                     <p id="damage-meter-value"></p>
                     <meter id="damage-meter" min="0" max="100" low="25" optimum="75" high="50"></meter>
                 </div>
             </div>
-            <div>
+            <div style="display: grid;">
                 <label>Tiempo hasta el próximo escaneo Cylon:</label>
-                <input type="time" name="eta" id="tiempoRestante" disabled>
+                <p style="text-align: center;" type="time" name="eta" id="tiempoRestante"></p>
             </div>
         </div>
 
         <div id="saltoEmergencia">
             <label>Recalentamiento del motor de salto: <span id="jump-progress-value"></span></label>
-            <progress id="jump-progress" max="100"></progress><button type="button" id="btnSaltoEmergencia">SALTO DE
-                EMERGENCIA</button>
-            <div>
-                <p id="jump-progress-value"></p>
-
-            </div><br>
+            <progress id="jump-progress" max="100"></progress>
+            <button type="button" id="btnSaltoEmergencia">
+                SALTO DE EMERGENCIA
+            </button>
         </div>
     </div>
+
+    <div id="cinematica"></div>
+    <script src="js/Objetos/Combate.js"></script>
+    <script src="js/Objetos/Planeta.js"></script>
+    <script src="js/Objetos/NaveEnemiga.js"></script>
+    <script src="js/Objetos/Nave.js"></script>
+
+
+    <script src="js/scriptGastoEnergia/scriptGastoEnergia.js"></script>
+    <script src="js/scriptFuncionesGenerales/scriptFuncionesGenerales.js"></script>
+    <script src="js/scriptEscudos/scriptEscudos.js"></script>
+    <script src="js/scriptModales/scriptModales.js"></script>
+    <script src="js/scriptArmas/scriptArmas.js"></script>
+    <script src="js/scriptPelea/scriptPelea.js"></script>
+    <script src="js/scriptMotor/scriptMotor.js"></script>
+    <script src="js/Cookies/scriptCookies.js"></script>
+    <script src="js/scriptFormularios/scripFormularios.js"></script>
+    <script src="js/scriptResumen/scriptResumen.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
