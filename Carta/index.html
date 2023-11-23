@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .carta {
+            width: 300px;
+            height: 425px;
+            transition: transform 1s;
+        }
+
+        .carta:hover {
+            transform: rotateY(180deg);
+        }
+
+        .carta:hover .reverso {
+            opacity: 0;
+        }
+
+        .cara {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 425px;
+            background-image: url("carta.jpg");
+            background-size: cover;
+            transform: rotateY(180deg);
+        }
+
+        .reverso {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 300px;
+            height: 425px;
+            background-image: url("reversoCarta.jpg");
+            background-size: cover;
+
+            transition: opacity 0s 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="baraja">
+        <div class="carta">
+            <div class="cara"></div>
+            <div class="reverso"></div>
+        </div>
+    </div>
+</body>
+
+</html>
