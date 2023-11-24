@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #puzzle {
+        width: 400px;
+        height: 400px;
+        position: relative;
+    }
+
+    .pieza {
+        width: 50%;
+        height: 50%;
+        opacity: 0.5;
+        transition: all 0.5s ease-in-out;
+        position: absolute;
+    }
+
+    #p1 {
+        background-image: url("res/pieza1.png");
+        background-size: contain;
+        top: 0;
+        left: 0;
+    }
+
+    #p2 {
+        background-image: url("res/pieza2.png");
+        top: -25px;
+        left: 133px;
+        background-size: contain
+    }
+
+    #p3 {
+        background-image: url("res/pieza3.png");
+        background-size: contain;
+        top: 133px;
+        left: -25px;
+    }
+
+    #p4 {
+        background-image: url("res/pieza4.png");
+        background-size: contain;
+        top: 110px;
+        left: 110px;
+    }
+
+    .pieza:hover {
+        opacity: 1;
+    }
+</style>
+
+<body>
+    <div id="puzzle">
+        <div class="pieza" id="p1"></div>
+        <div class="pieza" id="p2"></div>
+        <div class="pieza" id="p3"></div>
+        <div class="pieza" id="p4"></div>
+    </div>
+
+</body>
+
+</html>
