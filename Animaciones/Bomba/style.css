@@ -6,6 +6,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
+    animation: cambioFondo 1s forwards;
+    animation-delay: 3s;
 }
 
 #bomba {
@@ -58,6 +60,15 @@ body {
     left: 47vw;
     animation: onda 2s;
     animation-delay: 2s;
+}
+
+@keyframes cambioFondo {
+    0% {}
+
+    100% {
+        background-image: url("https://t3.ftcdn.net/jpg/05/36/28/48/360_F_536284813_4CN8cdcSk9l3TJcvvlSZ0OGgLneBmjWV.jpg");
+
+    }
 }
 
 @keyframes onda {

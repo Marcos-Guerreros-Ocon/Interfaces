@@ -4,10 +4,19 @@
 
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+
+}
+
 body {
     background: url("https://images6.alphacoders.com/124/1243346.png");
     background-position: center center;
-    height: 99vh;
+
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'dotFont', sans-serif;
