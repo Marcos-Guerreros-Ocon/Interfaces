@@ -78,4 +78,12 @@ ul li {
         width: 25%;
     }
 
+
+}
+
+@media screen and (max-width: 770px) {
+    .vr {
+        display: none;
+    }
+
 }
