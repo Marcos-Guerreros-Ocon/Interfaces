@@ -1,6 +1,6 @@
 body {
     font-family: 'Jetbrain Mono', monospace;
-    background-color: #B4B4B4;
+    background-color: #ff3f3f1f;
 }
 
 h1 {
@@ -78,6 +78,9 @@ ul li {
         width: 25%;
     }
 
+    #curriculum {
+        width: 50vw;
+    }
 
 }
 
