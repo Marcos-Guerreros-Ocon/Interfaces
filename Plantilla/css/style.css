@@ -74,9 +74,38 @@ figure {
     background-color: #232323;
 }
 
+#services footer a {
+    color: #FCA62B;
+}
+
+footer.more {
+    display: flex;
+    justify-content: end;
+
+}
+
+#copyright a,
+#copyright p {
+    color: #A6B4B4;
+}
+
+#copyright {
+    width: 960px;
+}
+
+.row4 {
+    display: flex;
+    justify-content: center;
+
+}
+
 @media screen and (max-width:1000px) {
     #slider {
         display: none;
+    }
+
+    figcaption {
+        width: 290px;
     }
 }
 
@@ -89,6 +118,19 @@ figure {
         width: 280px;
     }
 
+    .row2 {
+        padding: 0;
+    }
+
+    article {
+        margin-top: 20px;
+    }
+
+    footer.more {
+        display: flex;
+        justify-content: center;
+
+    }
 }
 
 @media screen and (max-width:280px) {
@@ -99,6 +141,4 @@ figure {
     figure img {
         width: 250px;
     }
-
-
 }
