@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    #circuito {
+        height: 100%;
+        width: 100%;
+        background-image: url("circuito-sencillo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: relative;
+    }
+
+    #coche {
+        height: 100px;
+        width: 100px;
+        background-image: url("coche.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        top: 87%;
+        left: 23%;
+        rotate: 180deg;
+
+        animation: mover 20s linear backwards;
+        animation-play-state: paused;
+        animation-iteration-count: 1;
+
+    }
+
+    #coche:hover {
+        animation-play-state: running;
+
+    }
+
+
+    @keyframes mover {
+        0% {
+            top: 87%;
+            left: 24%;
+            rotate: 180deg;
+        }
+
+        12% {
+            top: 20%;
+            left: 24%;
+            rotate: 180deg;
+        }
+
+        24% {
+            top: 11%;
+            left: 30%;
+            rotate: 220deg;
+        }
+
+        36% {
+            top: 1%;
+            left: 35%;
+            rotate: 261deg;
+        }
+
+        48% {
+            top: 12%;
+            left: 47%;
+            rotate: 300deg;
+        }
+
+        60% {
+            top: 25%;
+            left: 47%;
+            rotate: 359deg;
+        }
+
+        72% {
+            top: 66%;
+            left: 47%;
+            rotate: 359deg;
+        }
+
+        84% {
+            top: 86%;
+            left: 60%;
+            rotate: 270deg;
+        }
+
+
+        96% {
+            top: 66%;
+            left: 70%;
+            rotate: 180deg;
+        }
+
+        100% {
+            top: 2%;
+            left: 70%;
+            rotate: 180deg;
+        }
+    }
+</style>
+
+<body>
+    <div id="circuito">
+
+        <div id="coche"></div>
+
+    </div>
+
+</body>
+
+</html>
