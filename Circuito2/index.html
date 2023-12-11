@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .contenido {
+            position: relative;
+        }
+
+        .path {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenido">
+        <img class="circuito" src="ciudad.png" alt="">
+        <svg class="path" width="521" height="392" viewBox="0 0 521 392" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 77.09,385.45
+            C 77.09,385.45 76.30,124.91 76.30,124.91
+              79.08,62.00 151.75,80.00 149.08,123.33
+              145.88,197.00 134.81,190.40 218.62,185.31
+              241.20,185.33 268.64,133.45 303.27,148.00
+              335.60,161.52 344.33,187.00 344.00,208.67
+              343.50,246.00 299.33,244.33 298.33,268.67
+              298.33,268.67 299.25,386.00 299.25,386.00" id="animatePath">
+            </path>
+            <image id="car1" xlink:href="./coche.png" y="-10" x="0" width="25px" height="25px">
+                <animateMotion xlink:href="#car1" dur="24s" repeatCount="1" rotate="auto">
+                    <mpath xlink:href="#animatePath" />
+                </animateMotion>
+            </image>
+        </svg>
+
+        <svg class="path" width="521" height="392" viewBox="0 0 521 392" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 210.00,5.00
+            C 206.00,77.50 210.36,71.91 250.95,74.18
+              285.55,75.82 359.16,64.30 387.18,72.27
+              416.55,81.45 423.00,103.91 424.36,121.82
+              425.55,145.36 425.55,254.64 425.61,272.82
+              425.45,294.27 430.09,313.91 391.36,314.36
+              391.36,314.36 273.45,312.64 243.45,312.45
+              189.91,322.56 155.25,311.50 110.67,254.83
+              77.00,190.33 15.03,210.33 14.67,209.58" id="animatePath2">
+            </path>
+            <image id="car2" xlink:href="./coche.png" y="0" x="0" width="25px" height="25px">
+                <animateMotion xlink:href="#car2" dur="18s" repeatCount="1" rotate="auto">
+                    <mpath xlink:href="#animatePath2" />
+                </animateMotion>
+            </image>
+        </svg>
+
+
+        <svg class="path" width="521" height="392" viewBox="0 0 521 392" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 6.50,194.00
+            C 85.64,174.73 130.23,266.56 171.09,291.64
+              213.64,311.09 441.38,301.12 465.64,296.91
+              483.12,291.38 516.60,249.50 516.50,249.50" id="animatePath3">
+            </path>
+            <image id="car3" xlink:href="./coche.png" y="0" x="0" width="25px" height="25px">
+                <animateMotion xlink:href="#car3" dur="6s" repeatCount="1" rotate="auto">
+                    <mpath xlink:href="#animatePath3" />
+                </animateMotion>
+            </image>
+        </svg>
+    </div>
+</body>
+
+</html>
