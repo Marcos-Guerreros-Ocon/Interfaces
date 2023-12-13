@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #f8f8f8;
+        }
+
+        .contenido {
+            position: relative;
+            animation: hacerNoche 12s linear infinite;
+            border-radius: 5%;
+            border: #1d1b1b solid 5px;
+        }
+
+        .path {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes hacerNoche {
+            0% {
+                background-color: rgb(255, 255, 255);
+            }
+
+            49% {
+                background-color: rgb(255, 255, 255);
+            }
+
+            50% {
+                background-color: #1d1b1b;
+            }
+
+            100% {
+                background-color: #1d1b1b;
+            }
+        }
+
+
+
+        #rojo {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #car2 {
+            filter: drop-shadow(2px 4px 6px #480cee);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="contenido">
+        <img class="circuito" src="ruta.png" alt="">
+
+        <svg class="path" width="700" height="700" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 326.00,735.00
+            C 359.46,750.30 476.96,-92.06 324.00,-162.00
+              324.00,-162.00 1128.00,-117.00 1128.00,-117.00
+              1128.00,-117.00 1227.00,339.00 1227.00,339.00
+              1269.42,277.05 -119.27,-161.97 -300.00,102.00
+              -300.00,102.00 -372.00,648.00 -372.00,648.00
+              -344.00,745.52 841.94,292.29 786.00,84.00
+              789.00,81.00 948.00,591.00 948.00,591.00
+              716.01,712.77 -231.72,-146.49 -30.00,-102.00
+              -30.00,-102.00 12.00,1005.00 12.00,1005.00
+              10.52,1004.96 44.47,491.50 399.00,501.00
+              753.78,503.22 798.00,894.00 798.00,894.00" id="helicop">
+            </path>
+
+            <image id="heli" xlink:href="./helicopter.png" y="-10" x="0" width="80px" height="80px">
+                <animateMotion xlink:href="#heli" dur="40s" repeatCount="20" rotate="auto">
+                    <mpath xlink:href="#helicop" />
+                </animateMotion>
+            </image>
+        </svg>
+
+
+
+        <svg class=" path" width="700" height="700" viewBox="0 0 700 700" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M 248.00,699.00
+            C 248.00,699.00 226.00,574.67 265.00,539.00
+              299.00,506.33 501.50,542.75 535.67,502.00
+              570.00,457.64 553.50,112.75 532.33,92.33
+              470.50,32.50 308.00,97.50 268.33,67.67
+              220.00,24.50 259.98,-188.00 260.00,-188.00
+              260.00,-188.00 853.00,-162.00 853.00,-162.00
+              853.00,-162.00 869.00,503.00 869.00,503.00
+              869.05,525.62 687.64,506.91 672.00,487.00
+              642.46,459.28 682.25,259.75 652.50,220.00
+              610.76,168.53 259.50,195.50 231.00,221.50
+              193.50,245.50 227.75,464.25 197.00,481.00
+              143.25,512.75 -45.24,507.99 -39.00,504.00" id="animatePath">
+            </path>
+
+            <image id="car2" xlink:href="./coche.png" y="-10" x="0" width="40px" height="40px">
+                <animateMotion xlink:href="#car2" dur="12s" repeatCount="20" rotate="auto">
+                    <mpath xlink:href="#animatePath" />
+                </animateMotion>
+            </image>
+        </svg>
+
+
+
+        <svg class="path" width="700" height="700" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 248.00,699.00
+            C 248.00,699.00 226.00,574.67 265.00,539.00
+              299.00,506.33 501.50,542.75 535.67,502.00
+              570.00,457.64 553.50,112.75 532.33,92.33
+              470.50,32.50 308.00,97.50 268.33,67.67
+              220.00,24.50 259.98,-188.00 260.00,-188.00
+              260.00,-188.00 853.00,-162.00 853.00,-162.00
+              853.00,-162.00 869.00,503.00 869.00,503.00
+              869.05,525.62 687.64,506.91 672.00,487.00
+              642.46,459.28 682.25,259.75 652.50,220.00
+              610.76,168.53 259.50,195.50 231.00,221.50
+              193.50,245.50 227.75,464.25 197.00,481.00
+              143.25,512.75 -45.24,507.99 -39.00,504.00" id="animatePath">
+            </path>
+
+            <image id="car1" xlink:href="./cocheP2.gif" y="-10" x="-50" width="50px" height="50px">
+                <animateMotion xlink:href="#car1" dur="12s" repeatCount="20" rotate="auto" begin="1s">
+                    <mpath xlink:href="#animatePath" />
+                </animateMotion>
+            </image>
+        </svg>
+    </div>
+
+</body>
+
+</html>
